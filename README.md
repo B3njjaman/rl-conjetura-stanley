@@ -26,10 +26,17 @@ mismo polinomio.
 ## Estructura
 
 ```
-notebooks/   # cuadernos de trabajo (.ipynb)
-figuras/     # gráficos generados
-datos/       # checkpoints y sesiones (.pkl / .pt) — no versionado
+notebooks/            # cuadernos de trabajo (.ipynb)
+wagner_original/      # copia del repo de Wagner (referencia para comparar)
+figuras/              # gráficos generados
+datos/                # checkpoints y sesiones (.pkl / .pt) — no versionado
+CAMBIOS_VS_WAGNER.md  # bitácora numerada de diferencias vs el código de Wagner
 ```
+
+Las diferencias entre mi implementación en PyTorch y la original de Wagner están
+registradas en [`CAMBIOS_VS_WAGNER.md`](CAMBIOS_VS_WAGNER.md). En el código cada
+cambio aparece marcado como `# >>> CAMBIO N vs Wagner: ...`, apuntando a la fila N
+de esa tabla.
 
 ## Entorno
 
