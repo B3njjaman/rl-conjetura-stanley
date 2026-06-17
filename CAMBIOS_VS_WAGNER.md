@@ -31,6 +31,13 @@ notebooks del repo (validación, Enfoque 1 y Enfoque 2).
 | 7 | Generación de sesiones | `for` sesión por sesión (cuello de botella, lo dice el propio Wagner) | Vectorizada sobre las `n_sessions` (una `forward` por paso) | Rapidez |
 | 8 | Paso de entrenamiento | `model.fit(elite, ...)` (Keras) | Bucle PyTorch explícito: `BCELoss`, `backward`, `clip_grad_norm_`, `step` | Control fino y explícito de la optimización |
 | 9 | Persistencia | pickle + txt cada 20 iters | `.pkl` de súper-sesiones + `modelo.pt` (state_dict) cada 20; `contraejemplo.npy` al hallarlo | Formato nativo de PyTorch para retomar el entrenamiento |
+| 10 | Interpretación de la palabra (nb 02) | una palabra = un grafo (largo $\binom{N}{2}$) | una palabra = un **par**: largo $2\binom{N}{2}$, primera mitad $G_1$, segunda mitad $G_2$ | Paso hacia Stanley, que compara dos grafos en vez de uno |
+| 11 | Reconstrucción del grafo (nb 02) | rearma un grafo | **parte la palabra en 2** y rearma cada mitad como grafo, sin tocar el resto del algoritmo | Leer el par reusando el mismo recorrido triangular |
+| 12 | Recompensa (nb 02) | $\sqrt{n-1}+1-\lambda_1-\mu$ sobre un grafo | función del **par** (provisional: conexos + pocas aristas; luego comparar $U_0$ de Stanley) | El objetivo ahora vive sobre dos grafos |
+
+> Las filas **1–9** corresponden al notebook 01 (validación con Wagner, un solo
+> grafo). De la **10** en adelante son del notebook 02 (par de grafos) y los que
+> sigan, con numeración continua.
 
 ## Lo que NO cambia (a propósito)
 
