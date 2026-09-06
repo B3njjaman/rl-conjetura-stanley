@@ -34,6 +34,7 @@ notebooks del repo (validación, Enfoque 1 y Enfoque 2).
 | 10 | Interpretación de la palabra (nb 02) | una palabra = un grafo (largo $\binom{N}{2}$) | una palabra = un **par**: largo $2\binom{N}{2}$, primera mitad $G_1$, segunda mitad $G_2$ | Paso hacia Stanley, que compara dos grafos en vez de uno |
 | 11 | Reconstrucción del grafo (nb 02) | rearma un grafo | **parte la palabra en 2** y rearma cada mitad como grafo, sin tocar el resto del algoritmo | Leer el par reusando el mismo recorrido triangular |
 | 12 | Recompensa (nb 02) | $\sqrt{n-1}+1-\lambda_1-\mu$ sobre un grafo | función del **par** (provisional: conexos + pocas aristas; luego comparar $U_0$ de Stanley) | El objetivo ahora vive sobre dos grafos |
+| 13 | Selección élite/súper (nb 01 y 02) | `select_elites` / `select_super_sessions`: umbral por percentil **y tope** de `n_sessions·(100−pct)/100` sesiones entre las que empatan en el umbral (las estrictamente por encima entran siempre) | máscara `REC >= np.percentile(REC, pct)` sin tope | **Diferencia no intencional** (detectada el 2026-09-05 al revisar el nb 01). Si muchas sesiones empatan en el umbral —los desconexos valen todos −1000, o la política ya colapsó y repite el mismo grafo— la élite y las súper se inflan: en una corrida la élite fue 1064 sesiones (todas). Las corridas `wagner_fit` de `scripts/01_wagner_conj21/` usan la selección con tope de Wagner |
 
 > Las filas **1–9** corresponden al notebook 01 (validación con Wagner, un solo
 > grafo). De la **10** en adelante son del notebook 02 (par de grafos) y los que
@@ -45,6 +46,18 @@ Para que la comparación sea justa, mantengo idénticos: la conjetura, la recomp
 $\sqrt{n-1}+1-\lambda_1-\mu$, la codificación del estado ($2\binom{N}{2}$ = palabra
 parcial + one-hot), el tamaño de la red (128-64-4-1), los percentiles élite/súper
 (93/94) y `n_sessions = 1000`.
+
+## Nota sobre los cambios #3 y #8 (revisión del 2026-09-05)
+
+El `model.fit(elite_states, elite_actions)` de Wagner no es un paso de gradiente: con los
+valores por defecto de Keras es **una época completa por minilotes de 32** sobre los ~12 000
+pares (estado, acción) de la élite, es decir unos 400 pasos de SGD (lr 1e-4) por iteración.
+El notebook 01 hace en cambio **un solo paso** de Adam (lr 1e-2) sobre toda la élite.
+Son dinámicas distintas: en las corridas de `resultados/01_wagner_conj21/` la versión del
+notebook colapsa en ~150 iteraciones (loss ≈ 0.04, todas las súper-sesiones son el mismo
+grafo) y queda atrapada en óptimos locales (−0.48, −1.21), mientras que el fit de Wagner
+baja más lento pero mantiene exploración. La variante `wagner_fit` de
+`scripts/01_wagner_conj21/variantes.py` reproduce el `fit` de Keras en PyTorch.
 
 ## Nota sobre el cambio #4
 
