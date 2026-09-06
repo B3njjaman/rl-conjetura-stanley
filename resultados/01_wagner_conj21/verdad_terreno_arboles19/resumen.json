@@ -1,0 +1,12 @@
+{
+ "N": 19,
+ "cota_conjetura": 5.242640687119285,
+ "total_arboles": 317955,
+ "score_maximo": 0.08036302695090569,
+ "arboles_score_positivo": 2,
+ "arboles_score_mayor_m0_1": 3,
+ "arboles_score_mayor_m0_5": 11,
+ "arboles_score_mayor_m1": 126,
+ "score_mediana": -4.368920514697055,
+ "segundos": 285
+}
