@@ -1,0 +1,20 @@
+device: cpu
+0 arboles, 20s
+50000 arboles, 65s
+100000 arboles, 96s
+150000 arboles, 148s
+200000 arboles, 189s
+250000 arboles, 228s
+300000 arboles, 268s
+{
+ "N": 19,
+ "cota_conjetura": 5.242640687119285,
+ "total_arboles": 317955,
+ "score_maximo": 0.08036302695090569,
+ "arboles_score_positivo": 2,
+ "arboles_score_mayor_m0_1": 3,
+ "arboles_score_mayor_m0_5": 11,
+ "arboles_score_mayor_m1": 126,
+ "score_mediana": -4.368920514697055,
+ "segundos": 285
+}

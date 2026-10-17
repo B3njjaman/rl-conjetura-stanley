@@ -1,0 +1,6 @@
+device: cpu
+[wagner_fit_seed1] modo=wagner_fit seed=1 iters=3000 tiempo_max=3600.0 hilos=1 device=cpu
+[wagner_fit_seed1] iter    0 | mejor -11.0323 | top100 -11.9081 | loss 0.6892 | elite 70 super 60 (distintos 60)
+[wagner_fit_seed1] iter   50 | mejor -8.4723 | top100 -9.1534 | loss 0.5866 | elite 75 super 64 (distintos 64)
+[wagner_fit_seed1] iter  100 | mejor -5.4700 | top100 -7.1279 | loss 0.4591 | elite 75 super 64 (distintos 64)
+[wagner_fit_seed1] iter  150 | mejor -4.5249 | top100 -5.7588 | loss 0.4012 | elite 75 super 64 (distintos 64)

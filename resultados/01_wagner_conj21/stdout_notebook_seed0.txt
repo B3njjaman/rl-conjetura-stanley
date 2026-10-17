@@ -1,0 +1,7 @@
+device: cpu
+[notebook_seed0] modo=notebook seed=0 iters=1000 tiempo_max=2700.0 hilos=1 device=cpu
+[notebook_seed0] iter    0 | mejor -11.0846 | top100 -11.9244 | loss 0.6861 | elite 70 super 60 (distintos 60)
+[notebook_seed0] iter   50 | mejor -3.1375 | top100 -4.3360 | loss 0.3029 | elite 75 super 64 (distintos 64)
+[notebook_seed0] iter  100 | mejor -1.2900 | top100 -1.7614 | loss 0.1556 | elite 75 super 64 (distintos 64)
+[notebook_seed0] iter  150 | mejor -1.2068 | top100 -1.3930 | loss 0.0867 | elite 75 super 65 (distintos 64)
+[notebook_seed0] iter  200 | mejor -1.2068 | top100 -1.2068 | loss 0.0413 | elite 311 super 311 (distintos 65)
