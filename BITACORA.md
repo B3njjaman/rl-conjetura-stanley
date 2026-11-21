@@ -115,6 +115,29 @@ resultados con n = 16–19 (n = 19: de 13,7 s a 3,0 s con 2 hilos). Las corridas
 (commits 15e5b65, 4f54e9b8 y 653bd417) usan la versión anterior: el resultado es el mismo, solo cambia el
 tiempo.
 
+## 2026-11-21 (noche) — primeros resultados de Kaggle
+
+**Verdad de terreno n = 20–24** (kernel `verdad-terreno`, 64 min en 4 núcleos, con la versión anterior del código):
+
+| n | árboles | pares con igual $U_3$ | igual $U_4$ | igual $U_5$ |
+|---|---|---|---|---|
+| 20 | 823.065 | 96 | 0 | 0 |
+| 21 | 2.144.505 | 111 | 0 | 0 |
+| 22 | 5.623.756 | 695 | **1** | 0 |
+| 23 | 14.828.074 | 856 | 1 | 0 |
+| 24 | 39.299.897 | 4.765 | 6 | 0 |
+
+El primer par con igual $U_4$ aparece con n = 22, el mínimo publicado (Smith, Smith y Tian; Aliste-Prieto, de Mier y
+Zamora), y es su $Y_{1,1}$/$Z_{1,1}$ (`tests/test_aliste_yz.py`). No hay pares con igual $U_5$ hasta n = 24, lo que
+es compatible con la Conjetura 15. Los choques de $U_3$ son pocos: 4.765 pares entre 39 millones de árboles. La
+cascada exhaustiva, entonces, se juega casi entera en el primer filtro.
+
+**Enfoque 1 contra el control con lr = 0** (kernel `enfoque1`): **el control encuentra más pares**. Con N = 7, al
+final de las 5.000 iteraciones, va 58, 37 y 15 de 106 aprendiendo, contra 104, 101 y 77 sin aprender. La causa es
+el colapso de la población: las súper sesiones distintas bajan de ~64 a 1 entre las iteraciones 170 y 266, y después
+no aparece ningún par nuevo. H2 queda refutada y H5 confirmada (`docs/hipotesis.md`). Con N ≤ 7 el problema es
+fácil para el azar: el primer par sale en la iteración 0 a 5 con o sin aprendizaje.
+
 ## Pendientes / ideas
 
 - Verificar el calculo del U0-polinomio contra casos chicos conocidos (n <= 6).

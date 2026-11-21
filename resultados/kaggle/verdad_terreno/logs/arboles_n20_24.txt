@@ -1,0 +1,5 @@
+n=20: 823065 arboles | U_3: 96 pares | U_4: 0 pares | 38.2s
+n=21: 2144505 arboles | U_3: 111 pares | U_4: 0 pares | 90.8s
+n=22: 5623756 arboles | U_3: 695 pares | U_4: 1 pares | U_5: 0 pares | 279.0s
+n=23: 14828074 arboles | U_3: 856 pares | U_4: 1 pares | U_5: 0 pares | 851.3s
+n=24: 39299897 arboles | U_3: 4765 pares | U_4: 6 pares | U_5: 0 pares | 2586.9s

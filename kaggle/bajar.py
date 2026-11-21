@@ -17,7 +17,7 @@ def main():
     ap.add_argument("--lote", required=True)
     ap.add_argument("--estado", action="store_true")
     a = ap.parse_args()
-    ref = f"{USUARIO}/tesis-stanley-{a.lote}"
+    ref = f"{USUARIO}/tesis-stanley-{a.lote.replace('_', '-')}"  # Kaggle usa guiones en el slug
     if a.estado:
         subprocess.run([sys.executable, "-m", "kaggle.cli", "kernels", "status", ref])
         return

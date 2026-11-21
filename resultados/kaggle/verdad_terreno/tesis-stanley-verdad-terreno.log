@@ -1,0 +1,11 @@
+[{"stream_name":"stdout","time":9.365172013,"data":"commit 4f54e9b86e5c2c6a037f3cca1397053e06f89b71 | cpus 4 | numpy 2.1.3 | numba 0.61.2 | torch 2.11.0+cpu | networkx 3.7\n"}
+,{"stream_name":"stdout","time":9.366121984,"data":"[      0s] inicia arboles_n20_24: NUMBA_NUM_THREADS=4 python scripts/verdad_terreno/arboles_grandes.py --n 20 21 22 23 24 --kmax 10 --bloque 250000\n"}
+,{"stream_name":"stdout","time":3859.75087199,"data":"[   3850s] termina arboles_n20_24 codigo 0\n"}
+,{"stream_name":"stdout","time":3859.751223044,"data":"LISTO {\"arboles_n20_24\": {\"codigo\": 0, \"segundos\": 3850}}\n"}
+,{"stream_name":"stderr","time":3863.515837621,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3863.515877501,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3863.846559737,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3863.846589497,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3864.823206134,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3866.047277388,"data":"[NbConvertApp] Writing 287070 bytes to __results__.html\n"}
+]

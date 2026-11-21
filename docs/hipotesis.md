@@ -23,7 +23,16 @@ Síntesis de dos revisiones independientes, una de Codex (GPT-6.2 Astra) y otra 
 **H2. ¿Aprende el Enfoque 1?** Con N = 6 y 7, el Cross-Entropy descubre más pares distintos que la misma búsqueda sin aprendizaje, con el mismo número de sesiones.
 - **Métrica:** recall contra sesiones, tanto la unión de las semillas como cada semilla por separado.
 - **Se refuta si:** el recall del Cross-Entropy es menor o igual al del control.
-- **Estado:** lote `enfoque1`, con controles de lr = 0.
+- **Resultado (21-11, lote `enfoque1`): refutada.** Pares distintos encontrados al final, de los que existen:
+
+  | | semilla 0 | semilla 1 | semilla 2 |
+  |---|---|---|---|
+  | N = 6, aprende (1.500 it) | 8/9 | 7/9 | 9/9 |
+  | N = 6, control lr = 0 | 9/9 | 9/9 | 9/9 |
+  | N = 7, aprende (5.000 it) | 58/106 | 37/106 | 15/106 |
+  | N = 7, control lr = 0 | 104/106 | 101/106 | 77/106 |
+
+  Hasta la iteración 100 van parejos (N = 7: 21, 25 y 4 pares aprendiendo; 15, 25 y 10 en el control). Después, la versión que aprende se estanca (ver H5). El primer par sale igual de rápido en ambas: iteración 0 a 5.
 
 **H3. ¿Encuentra el Enfoque 2 pares que existen?** (prioridad 1 para Fable y para Claude; Codex prefería partir por H2, que es más barata). En árboles con k = 3 y n = 16, 17 y 18, el método encuentra un par muy por sobre lo que daría el azar.
 - **Base (exacta):** con padres uniformes, la probabilidad por sesión es 7,5·10⁻⁸ (n = 16), 1,7·10⁻⁹ (n = 17) y 2,3·10⁻⁸ (n = 18). En 3.000 iteraciones eso da 20 %, 0,5 % y 6,5 % de corridas con éxito por azar (`resultados/verdad_terreno/azar_arboles_k3.json`). Con n = 16 el azar ya explica unas 2 de 10 semillas: **la evidencia está en n = 17 y 18**.
@@ -39,6 +48,7 @@ Síntesis de dos revisiones independientes, una de Codex (GPT-6.2 Astra) y otra 
 
 **H5. Sesgo de la codificación y bloqueo en el primer par.** Los pares que se encuentran son los que tienen más peso bajo la codificación por padres. Además, una corrida se queda en el primer par encontrado, porque su recompensa vale 1,0 y se queda en las súper sesiones.
 - **Mitigación declarada:** degradar los pares ya encontrados, o medir el recall como la unión de varias semillas o reinicios. Codex propone una variante: comparar 4 reinicios de 50 iteraciones con una corrida de 200.
+- **Resultado (21-11, Enfoque 1, N = 7): confirmada.** Las súper sesiones distintas pasan de unas 64 a **1** entre las iteraciones 170 y 266, porque la población colapsa en un solo par con recompensa 1,0. El último par nuevo aparece en las iteraciones 224, 132 y 167, y después no se encuentra ninguno más en las 4.800 restantes. Sin aprendizaje no hay colapso: el control sigue con unas 64 súper sesiones distintas y sigue encontrando pares.
 
 ## Objetivo estrella (decisión de Benja con sus profes)
 

@@ -1,0 +1,11 @@
+{
+ "enfoque": 1,
+ "N": 6,
+ "seed": 2,
+ "iters_corridas": 1500,
+ "pares_distintos": 9,
+ "total_pares_que_existen": 9,
+ "iter_primer_par": 0,
+ "mejor_final": 1.0,
+ "segundos": 367.1
+}

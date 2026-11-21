@@ -1,0 +1,39 @@
+[{"stream_name":"stdout","time":13.340870216,"data":"commit 15e5b656ce9fc3e87c0797b856161794332ad3bc | cpus 4 | numpy 2.1.3 | numba 0.61.2 | torch 2.11.0+cpu | networkx 3.7\n"}
+,{"stream_name":"stdout","time":13.341750018,"data":"[      0s] inicia e1_N5_s0: python -m stanley_rl.correr e1 --N 5 --seed 0 --iters 300 --tiempo-max 3600 --salida resultados/02_enfoque1/N5_s0\n"}
+,{"stream_name":"stdout","time":13.342631012,"data":"[      0s] inicia e1_N5_s1: python -m stanley_rl.correr e1 --N 5 --seed 1 --iters 300 --tiempo-max 3600 --salida resultados/02_enfoque1/N5_s1\n"}
+,{"stream_name":"stdout","time":13.344086321,"data":"[      0s] inicia e1_N5_s2: python -m stanley_rl.correr e1 --N 5 --seed 2 --iters 300 --tiempo-max 3600 --salida resultados/02_enfoque1/N5_s2\n"}
+,{"stream_name":"stdout","time":13.345891679,"data":"[      0s] inicia e1_N6_s0: python -m stanley_rl.correr e1 --N 6 --seed 0 --iters 1500 --tiempo-max 7200 --salida resultados/02_enfoque1/N6_s0\n"}
+,{"stream_name":"stdout","time":63.35294882,"data":"[     50s] termina e1_N5_s1 codigo 0\n"}
+,{"stream_name":"stdout","time":63.354693134,"data":"[     50s] inicia e1_N6_s1: python -m stanley_rl.correr e1 --N 6 --seed 1 --iters 1500 --tiempo-max 7200 --salida resultados/02_enfoque1/N6_s1\n"}
+,{"stream_name":"stdout","time":83.35704127,"data":"[     70s] termina e1_N5_s0 codigo 0\n"}
+,{"stream_name":"stdout","time":83.357082654,"data":"[     70s] termina e1_N5_s2 codigo 0\n"}
+,{"stream_name":"stdout","time":83.357550425,"data":"[     70s] inicia e1_N6_s2: python -m stanley_rl.correr e1 --N 6 --seed 2 --iters 1500 --tiempo-max 7200 --salida resultados/02_enfoque1/N6_s2\n"}
+,{"stream_name":"stdout","time":83.358774766,"data":"[     70s] inicia e1_N7_s0: python -m stanley_rl.correr e1 --N 7 --seed 0 --iters 5000 --tiempo-max 10800 --salida resultados/02_enfoque1/N7_s0\n"}
+,{"stream_name":"stdout","time":403.392298684,"data":"[    390s] termina e1_N6_s0 codigo 0\n"}
+,{"stream_name":"stdout","time":403.393972776,"data":"[    390s] inicia e1_N7_s1: python -m stanley_rl.correr e1 --N 7 --seed 1 --iters 5000 --tiempo-max 10800 --salida resultados/02_enfoque1/N7_s1\n"}
+,{"stream_name":"stdout","time":433.397781826,"data":"[    420s] termina e1_N6_s1 codigo 0\n"}
+,{"stream_name":"stdout","time":433.400147802,"data":"[    420s] inicia e1_N7_s2: python -m stanley_rl.correr e1 --N 7 --seed 2 --iters 5000 --tiempo-max 10800 --salida resultados/02_enfoque1/N7_s2\n"}
+,{"stream_name":"stdout","time":463.405289476,"data":"[    450s] termina e1_N6_s2 codigo 0\n"}
+,{"stream_name":"stdout","time":463.406651535,"data":"[    450s] inicia e1_N6_s0_control: python -m stanley_rl.correr e1 --N 6 --seed 0 --iters 1500 --tiempo-max 7200 --salida resultados/02_enfoque1/N6_s0_control --set lr=0\n"}
+,{"stream_name":"stdout","time":593.421549178,"data":"[    580s] termina e1_N6_s0_control codigo 0\n"}
+,{"stream_name":"stdout","time":593.422807085,"data":"[    580s] inicia e1_N6_s1_control: python -m stanley_rl.correr e1 --N 6 --seed 1 --iters 1500 --tiempo-max 7200 --salida resultados/02_enfoque1/N6_s1_control --set lr=0\n"}
+,{"stream_name":"stdout","time":733.441305088,"data":"[    720s] termina e1_N6_s1_control codigo 0\n"}
+,{"stream_name":"stdout","time":733.44427865,"data":"[    720s] inicia e1_N6_s2_control: python -m stanley_rl.correr e1 --N 6 --seed 2 --iters 1500 --tiempo-max 7200 --salida resultados/02_enfoque1/N6_s2_control --set lr=0\n"}
+,{"stream_name":"stdout","time":863.458597015,"data":"[    850s] termina e1_N6_s2_control codigo 0\n"}
+,{"stream_name":"stdout","time":863.460970529,"data":"[    850s] inicia e1_N7_s0_control: python -m stanley_rl.correr e1 --N 7 --seed 0 --iters 5000 --tiempo-max 7200 --salida resultados/02_enfoque1/N7_s0_control --set lr=0\n"}
+,{"stream_name":"stdout","time":1583.550273912,"data":"[   1570s] termina e1_N7_s0_control codigo 0\n"}
+,{"stream_name":"stdout","time":1583.552842667,"data":"[   1570s] inicia e1_N7_s1_control: python -m stanley_rl.correr e1 --N 7 --seed 1 --iters 5000 --tiempo-max 7200 --salida resultados/02_enfoque1/N7_s1_control --set lr=0\n"}
+,{"stream_name":"stdout","time":2023.606734351,"data":"[   2010s] termina e1_N7_s0 codigo 0\n"}
+,{"stream_name":"stdout","time":2023.610247841,"data":"[   2010s] inicia e1_N7_s2_control: python -m stanley_rl.correr e1 --N 7 --seed 2 --iters 5000 --tiempo-max 7200 --salida resultados/02_enfoque1/N7_s2_control --set lr=0\n"}
+,{"stream_name":"stdout","time":2183.634425792,"data":"[   2170s] termina e1_N7_s2 codigo 0\n"}
+,{"stream_name":"stdout","time":2223.638937348,"data":"[   2210s] termina e1_N7_s1_control codigo 0\n"}
+,{"stream_name":"stdout","time":2493.659508205,"data":"[   2480s] termina e1_N7_s2_control codigo 0\n"}
+,{"stream_name":"stdout","time":3843.771242619,"data":"[   3830s] termina e1_N7_s1 codigo 0\n"}
+,{"stream_name":"stdout","time":3843.771963534,"data":"LISTO {\"e1_N5_s1\": {\"codigo\": 0, \"segundos\": 50}, \"e1_N5_s0\": {\"codigo\": 0, \"segundos\": 70}, \"e1_N5_s2\": {\"codigo\": 0, \"segundos\": 70}, \"e1_N6_s0\": {\"codigo\": 0, \"segundos\": 390}, \"e1_N6_s1\": {\"codigo\": 0, \"segundos\": 370}, \"e1_N6_s2\": {\"codigo\": 0, \"segundos\": 380}, \"e1_N6_s0_control\": {\"codigo\": 0, \"segundos\": 130}, \"e1_N6_s1_control\": {\"codigo\": 0, \"segundos\": 140}, \"e1_N6_s2_control\": {\"codigo\": 0, \"segundos\": 130}, \"e1_N7_s0_control\": {\"codigo\": 0, \"segundos\": 720}, \"e1_N7_s0\": {\"codigo\": 0, \"segundos\": 1940}, \"e1_N7_s2\": {\"codigo\": 0, \"segundos\": 1750}, \"e1_N7_s1_control\": {\"codigo\": 0, \"segundos\": 640}, \"e1_N7_s2_control\": {\"codigo\": 0, \"segundos\": 470}, \"e1_N7_s1\": {\"codigo\": 0, \"segundos\": 3440}}\n"}
+,{"stream_name":"stderr","time":3847.78915948,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3847.789202252,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3848.283907667,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3848.283946997,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3849.456383493,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3851.02410269,"data":"[NbConvertApp] Writing 290713 bytes to __results__.html\n"}
+]

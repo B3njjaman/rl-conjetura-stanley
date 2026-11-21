@@ -85,3 +85,12 @@ def test_verdad_terreno_minima_es_el_par_yz(n, k, kl):
     Y, Z = par_yz(*kl)
     suyo = {canon_arbol(tuple(int(x) for x in _padres(T))) for T in (Y, Z)}
     assert mio == suyo
+
+
+def test_primer_par_u4_es_y11_z11():
+    """La enumeracion completa de n = 22 (Kaggle) da un solo par con igual U_4: el Y_{1,1}/Z_{1,1}."""
+    d = json.loads((RAIZ / "resultados" / "verdad_terreno" / "arboles_grandes_n22.json").read_text())
+    assert d["niveles"]["4"]["pares"] == 1 and d["niveles"]["5"]["pares"] == 0
+    mio = {canon_arbol(tuple(p)) for p in d["ejemplos"]["4"][0]}
+    suyo = {canon_arbol(tuple(int(x) for x in _padres(T))) for T in par_yz(1, 1)}
+    assert mio == suyo
