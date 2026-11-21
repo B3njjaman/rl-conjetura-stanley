@@ -37,10 +37,16 @@ def e1(N, s, iters, tmax, control=False):
                                   f"--tiempo-max {tmax} --salida resultados/02_enfoque1/N{N}_s{s}{suf}{x}")
 
 
-def e2(N, k, s, iters, tmax, control=False):
+def e2(N, k, s, iters, tmax, control=False, total=None, carpeta="03_enfoque2"):
     x, suf = _extra(control)
+    if total:                                    # parar cuando se hallaron todos los pares que existen
+        x += f" --total-pares {total} --parar-al-completar"
     return (f"e2_N{N}_k{k}_s{s}{suf}", f"python -m stanley_rl.correr e2 --N {N} --k {k} --seed {s} --iters {iters} "
-                                       f"--tiempo-max {tmax} --salida resultados/03_enfoque2/N{N}_k{k}_s{s}{suf}{x}")
+                                       f"--tiempo-max {tmax} --salida resultados/{carpeta}/N{N}_k{k}_s{s}{suf}{x}")
+
+
+# pares no isomorfos con igual U_3 que existen (verdad de terreno)
+PARES_U3 = {16: 1, 17: 1, 18: 11, 19: 12}
 
 
 def val(modo, s, iters, tmax, pkl=1000):
@@ -49,6 +55,9 @@ def val(modo, s, iters, tmax, pkl=1000):
 
 
 LOTES = {
+    # H3 (pre-registrada, semillas 101-110): ¿el metodo halla pares de arboles que se sabe que existen?
+    "h3_arboles": [e2(n, 3, s, 3000, 1.25 * H, total=PARES_U3[n], carpeta="04_h3_arboles")
+                   for n in (16, 17, 18) for s in range(101, 111)],
     "verdad_terreno": [("arboles_n20_24", "NUMBA_NUM_THREADS=4 python scripts/verdad_terreno/arboles_grandes.py "
                                           "--n 20 21 22 23 24 --kmax 10 --bloque 250000")],
     "humo": [val("notebook", 0, 4, 600), val("wagner_fit", 0, 3, 600),
