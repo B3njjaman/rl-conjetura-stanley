@@ -60,6 +60,12 @@ Resultados del 21-11 (detalle en cada hipótesis): H1 se reproduce con el ajuste
 
   Alcance: 0/10 contra 0/10 solo descarta un efecto grande del aprendizaje; no muestra que el RL sea peor que el azar por sesión. Lo que sí muestra es que **ninguno de los dos encuentra los pares de n = 17 y 18**, y que la mejor distancia final del control (1,4–2,0) es menor que la del que aprende (n = 17: casi siempre ~7,5; n = 18: hasta 11,5). El lote que aprende corrió con el código anterior al cambio 18 (mismo vector, otro tiempo).
 
+  **Límites del resultado (segunda opinión, verificados en los datos):**
+  - H3 corrió con la configuración por defecto de `enfoque2.Config`, que es el **modo de la tesis** (Adam lr = 1e-2, selección sin tope). Es el mismo modo que en H1 no llega a +0,0804. **El Enfoque 2 nunca corrió con el ajuste estilo Wagner**, así que H3 refuta esa configuración, no el método.
+  - El que aprende colapsa: en 27 de 30 corridas termina con `n_elite` ≥ 1.000 (toda la población empatada en un par) y la mediana de la última mejora es la iteración 99. En el control, 0 de 30 y la mediana es la 750. Buscó con una fracción chica del presupuesto.
+  - Con lr = 0 la red no cambia, así que el control genera sesiones i.i.d. de la red inicial (las súper sesiones solo pasan a la selección).
+  - **Piso de √2:** en cada nivel j del U_k, los coeficientes suman C(n−1, j) en cualquier árbol. Por eso la diferencia de dos vectores distintos tiene al menos dos coordenadas no nulas, y la menor distancia no nula es √2. El control toca ese piso en 24 de 30 corridas sin encontrar el par: hay muchos «casi pares» que no son choques. Falta medir si una distancia chica ayuda en algo (medición sin redes propuesta en `BITACORA.md`).
+
 **H4. Óptimo conocido sin colisión.** Con N = 12 y k = 3, la distancia mínima entre árboles no isomorfos es √6 ≈ 2,449, con 3 pares a esa distancia (verificado el 21-11 enumerando los 551 árboles).
 - **Pregunta:** ¿llega el método a ese óptimo, o se queda atascado o colapsa a T₁ ≅ T₂?
 - **Resultado (21-11, lote `enfoque2`): llega en 3/3 semillas** (2.000 iteraciones). El par de la presentación (`ArbolN12k3.png`) está a distancia 16,6.

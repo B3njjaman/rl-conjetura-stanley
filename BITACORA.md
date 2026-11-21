@@ -169,6 +169,20 @@ Se bajaron los lotes `validacion`, `enfoque2`, `h3_arboles` y `h3_control` (todo
 El texto de la tesis (cap. 4, ~l. 1164) dice que la validación dio «≈0.17 vs ≈0.08»: no lo respaldan
 ni las láminas (−0,48) ni la réplica, y con árboles el máximo es 0,0804.
 
+**Segunda opinión (Opus; Codex sin cuota hasta el 25-11).** Lo que se verificó en los datos:
+- H3 corrió en el modo de la tesis (Adam 1e-2, selección sin tope). El Enfoque 2 nunca corrió con el ajuste
+  estilo Wagner, que es el que sí reproduce a Wagner en H1.
+- El que aprende colapsa: 27 de 30 corridas terminan con `n_elite` ≥ 1.000, y la mediana de la última
+  mejora es la iteración 99.
+- La menor distancia no nula entre vectores U_k es √2, porque cada nivel suma C(n−1, j). El control toca ese
+  piso en 24 de 30 corridas sin encontrar el par.
+
+Medición propuesta, sin redes y en el PC, sobre los árboles enumerados de n = 16–18:
+1. Histograma de d² entre todos los pares.
+2. Para cada choque, la distancia en movimientos de un padre entre sus dos árboles.
+3. Descenso voraz desde 10⁴ pares al azar: la fracción que termina en un choque decide si la recompensa sirve
+   (≥ 10⁻³) o si es una aguja en un pajar (≤ 10⁻⁶).
+
 ## Pendientes / ideas
 
 - Verificar el calculo del U0-polinomio contra casos chicos conocidos (n <= 6).
