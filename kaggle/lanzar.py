@@ -49,6 +49,8 @@ def val(modo, s, iters, tmax, pkl=1000):
 
 
 LOTES = {
+    "verdad_terreno": [("arboles_n20_24", "NUMBA_NUM_THREADS=4 python scripts/verdad_terreno/arboles_grandes.py "
+                                          "--n 20 21 22 23 24 --kmax 10 --bloque 250000")],
     "humo": [val("notebook", 0, 4, 600), val("wagner_fit", 0, 3, 600),
              e1(5, 0, 15, 600), e1(7, 0, 3, 600),
              e2(12, 3, 0, 5, 600), e2(24, 4, 0, 3, 600)],
