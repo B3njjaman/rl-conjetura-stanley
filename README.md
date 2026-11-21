@@ -101,7 +101,7 @@ Wagner refutó con RL la conjetura 2.1 de su paper: $\lambda_1 + \mu \ge \sqrt{n
   <img alt="El contraejemplo de 19 vértices: dos estrellas de 8 hojas unidas por un vértice intermedio, con puntaje +0,0804" src="figuras/readme/contraejemplo-n19-claro.png">
 </picture>
 
-- **Con el ajuste de Wagner** (SGD, minilotes de 32, élite con tope) llega a **+0,0804**, el máximo exacto: un contraejemplo real.
+- **Con el ajuste de Wagner** (SGD, minilotes de 32, élite con tope) hay contraejemplo real en 2 de 3 semillas: **+0,0804** (el máximo exacto, el de la figura) y +0,0155. La tercera se queda en −0,48.
 - **En el modo de la tesis** (Adam, élite sin tope) llega como mucho a **−0,48**. Es el mismo grafo de la lámina «Contraejemplo encontrado»: queda cerca, pero no cruza el cero. Además se queda sin memoria cerca de la iteración 400.
 
 ---
@@ -194,7 +194,7 @@ Con $n \le 18$ hay pocos árboles (123.867 con $n = 18$), así que el azar tiene
 
 ## 7. Conclusiones
 
-1. **El método de Wagner se reproduce** ($N = 19$, +0,0804), pero solo con su ajuste.
+1. **El método de Wagner se reproduce** ($N = 19$: contraejemplo en 2 de 3 semillas), pero solo con su ajuste.
 2. **En el modo de la tesis, aprender no ayuda:** en grafos y en árboles la red sin aprender encuentra lo mismo o más.
 3. **Un par con igual $U_k$ no es un contraejemplo.** La pregunta útil es si hay un par con igual $U_5$ y menos de 34 vértices.
 4. **Hasta $n = 24$, enumerar le gana al RL.** El RL tiene sentido donde la enumeración no llega.
