@@ -26,14 +26,21 @@ H = 3600
 V = "scripts/01_wagner_conj21/correr.py"
 
 
-def e1(N, s, iters, tmax):
-    return (f"e1_N{N}_s{s}", f"python -m stanley_rl.correr e1 --N {N} --seed {s} --iters {iters} "
-                              f"--tiempo-max {tmax} --salida resultados/02_enfoque1/N{N}_s{s}")
+def _extra(control):
+    # control = el mismo algoritmo con lr = 0: la red no aprende (politica inicial fija)
+    return (" --set lr=0", "_control") if control else ("", "")
 
 
-def e2(N, k, s, iters, tmax):
-    return (f"e2_N{N}_k{k}_s{s}", f"python -m stanley_rl.correr e2 --N {N} --k {k} --seed {s} --iters {iters} "
-                                  f"--tiempo-max {tmax} --salida resultados/03_enfoque2/N{N}_k{k}_s{s}")
+def e1(N, s, iters, tmax, control=False):
+    x, suf = _extra(control)
+    return (f"e1_N{N}_s{s}{suf}", f"python -m stanley_rl.correr e1 --N {N} --seed {s} --iters {iters} "
+                                  f"--tiempo-max {tmax} --salida resultados/02_enfoque1/N{N}_s{s}{suf}{x}")
+
+
+def e2(N, k, s, iters, tmax, control=False):
+    x, suf = _extra(control)
+    return (f"e2_N{N}_k{k}_s{s}{suf}", f"python -m stanley_rl.correr e2 --N {N} --k {k} --seed {s} --iters {iters} "
+                                       f"--tiempo-max {tmax} --salida resultados/03_enfoque2/N{N}_k{k}_s{s}{suf}{x}")
 
 
 def val(modo, s, iters, tmax, pkl=1000):
@@ -49,10 +56,12 @@ LOTES = {
                   [val("notebook", s, 3000, 3.3 * H) for s in (0, 1, 2)],
     "enfoque1": [e1(5, s, 300, 1 * H) for s in (0, 1, 2)] +
                 [e1(6, s, 1500, 2 * H) for s in (0, 1, 2)] +
-                [e1(7, s, 5000, 3 * H) for s in (0, 1, 2)],
+                [e1(7, s, 5000, 3 * H) for s in (0, 1, 2)] +
+                [e1(N, s, it, 2 * H, control=True) for N, it in ((6, 1500), (7, 5000)) for s in (0, 1, 2)],
     "enfoque2": [e2(24, 4, s, 20000, 10.4 * H) for s in (0, 1)] +
                 [e2(24, 3, s, 20000, 10.4 * H) for s in (0,)] +
-                [e2(12, 3, s, 2000, 2.5 * H) for s in (0, 1, 2)],
+                [e2(12, 3, s, 2000, 2.5 * H) for s in (0, 1, 2)] +
+                [e2(24, 3, 1, 20000, 4 * H, control=True)],
 }
 
 RUN_PY = r'''

@@ -84,7 +84,8 @@ class Registro:
     def fila(self, **kw):
         kw["segundos"] = round(time.time() - self.t0, 1)
         self.filas.append(kw)
-        partes = [f"{k} {v:+.4f}" if isinstance(v, float) else f"{k} {v}" for k, v in kw.items()]
+        partes = [f"{k} {v:+.4f}" if isinstance(v, float) and k != "segundos" else f"{k} {v}"
+                  for k, v in kw.items()]
         self.log(" | ".join(partes), siempre=(kw.get("iter", 0) % self.imprimir_cada == 0))
 
     def json(self, nombre, obj):

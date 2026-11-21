@@ -1,0 +1,5 @@
+modo=wagner_fit seed=0 iters=3 tiempo_max=600.0 hilos=1 device=cpu
+iter    0 | mejor -11.0846 | top100 -11.9244 | loss 0.6856 | elite 70 super 60 (distintos 60)
+iter    1 | mejor -10.6813 | top100 -11.7031 | loss 0.6833 | elite 75 super 64 (distintos 64)
+iter    2 | mejor -10.6100 | top100 -11.5706 | loss 0.6816 | elite 75 super 64 (distintos 64)
+FIN {"nombre": "wagner_fit_seed0", "modo": "wagner_fit", "seed": 0, "iters_pedidas": 3, "iters_corridas": 3, "tiempo_max": 600.0, "segundos": 23, "mejor_score": -10.610049661840876, "contraejemplo_encontrado": false, "mejor_iter": 2, "lambda1": 6.852690348960159, "mu": 9, "arbol": false, "grados_mayores": [8, 8, 8, 8, 8]}

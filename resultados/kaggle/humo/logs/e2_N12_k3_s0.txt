@@ -1,0 +1,3 @@
+[N12_k3_s0] config {'N': 12, 'k': 3, 'seed': 0, 'iters': 5, 'tiempo_max': 600.0, 'n_ses': 1000, 'pct_elite': 93, 'pct_super': 94, 'optim': 'adam', 'lr': 0.01, 'weight_decay': 0.0001, 'clip': 1.0, 'minilote': None, 'seleccion': 'tesis', 'norma': 'l2', 'capas': (128, 64, 4), 'parar_al_completar': False, 'total_pares': None, 'extra': {}}
+[N12_k3_s0] iter 0 | mejor +0.2109 | top100 +0.0639 | loss +1.5920 | n_elite 71 | n_super 62 | super_distintos 62 | iso 2 | mejor_dist_no_iso +3.7417 | pares_distintos 0 | segundos +6.9000
+[N12_k3_s0] FIN {"enfoque": 2, "N": 12, "k": 3, "seed": 0, "iters_corridas": 5, "pares_distintos": 0, "total_pares_que_existen": null, "mejor_dist_no_iso": 3.7416573867739413, "segundos": 7.4}

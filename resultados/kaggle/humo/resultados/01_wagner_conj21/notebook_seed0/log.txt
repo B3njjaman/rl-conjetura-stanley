@@ -1,0 +1,6 @@
+modo=notebook seed=0 iters=4 tiempo_max=600.0 hilos=1 device=cpu
+iter    0 | mejor -11.0846 | top100 -11.9244 | loss 0.6861 | elite 70 super 60 (distintos 60)
+iter    1 | mejor -7.9182 | top100 -8.6021 | loss 0.5281 | elite 75 super 64 (distintos 64)
+iter    2 | mejor -4.3581 | top100 -6.3791 | loss 0.3824 | elite 75 super 64 (distintos 64)
+iter    3 | mejor -4.3581 | top100 -353.8940 | loss 0.2919 | elite 1064 super 64 (distintos 64)
+FIN {"nombre": "notebook_seed0", "modo": "notebook", "seed": 0, "iters_pedidas": 4, "iters_corridas": 4, "tiempo_max": 600.0, "segundos": 25, "mejor_score": -4.358148845952204, "contraejemplo_encontrado": false, "mejor_iter": 3, "lambda1": 3.600789533071489, "mu": 6, "arbol": false, "grados_mayores": [9, 5, 4, 4, 3]}
