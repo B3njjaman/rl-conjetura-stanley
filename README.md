@@ -50,7 +50,7 @@ Los entrenamientos con redes se corren en Kaggle, no en el PC (ver [Desarrollo](
 ## Marco teórico
 
 ```mermaid
-flowchart LR
+flowchart TD
     X["X_T<br/>polinomio simétrico cromático"] <-->|"Noble y Welsh:<br/>equivalentes en árboles"| U["U(T)<br/>U-polinomio"]
     U -->|"quitar ≤ k aristas"| Uk["U_k(T)<br/>U restringido"]
     Uk -->|"para todo k existen<br/>pares con igual U_k"| Phi["Φ(k) = n más chico<br/>con un par"]
@@ -124,7 +124,7 @@ Resultado: con $n = 34$ y $k = 5$ (284.274 cortes) baja de 42–61 ms a 3,6 ms p
 ## El método de Wagner
 
 ```mermaid
-flowchart LR
+flowchart TD
     R["Red 128-64-4"] -->|"genera 1.000 sesiones"| S["Árboles o grafos"]
     S -->|"recompensa"| E["Élite (mejor 7 %)"]
     E -->|"entrena"| R
