@@ -87,6 +87,26 @@ Resultados del 21-11 (detalle en cada hipótesis): H1 se reproduce con el ajuste
 - **Qué aporta:** un hallazgo refutaría la conjetura del profesor guía. Un resultado nulo quedaría calibrado por el recall medido en H3 (k = 3) y con k = 4 y n = 22 a 24.
 - **Dónde correrlo:** es un buen uso del NLHPC.
 
+## Otras vías (21-11, propuesta para decidir con los profes)
+
+Fuentes: una segunda opinión independiente (Opus; Codex sin cuota hasta el 25-11), la revisión de literatura (`docs/literatura_alternativas.md`) y el azar con memoria. La literatura viene en contra del Cross-Entropy en problemas de búsqueda:
+- Mehrabian et al. (IJCAI 2024, con Wagner de coautor): el CEM rinde «mucho peor» que tabu y AlphaZero, y agregar aprendizaje no mejoró nada.
+- Parczyk et al. (FoCM 2024): tabu y recocido le ganan al CEM en calidad y en tiempo.
+- Roucairol y Cazenave (2022): NRPA resuelve en segundos lo que al CEM le tomaba horas.
+- No hay ningún trabajo de ML sobre la conjetura de árboles.
+
+**A. Dentro de la tesis (núcleo de Wagner):**
+1. **H3 con el ajuste de Wagner.** SGD 1e-4, minilotes de 32, selección con tope y reinicio cuando `n_elite` > 500. En n = 18–20, 30 semillas, con una métrica continua (árboles hasta el primer par) y el criterio fijado antes de correr. Horas de Kaggle.
+2. **Wagner con memoria.** Una sesión es un árbol, como en Wagner original. La recompensa es la cercanía en U_k al árbol no isomorfo más próximo del historial. Diseño 2×2 (aprende o lr = 0, con o sin memoria) en k = 3, n = 20–24 y k = 4, n = 22–24, donde 6·10⁶ muestras ya no cubren el espacio.
+3. **Líneas base de la literatura:** tabu, recocido y NRPA, con el mismo presupuesto en árboles evaluados.
+4. **Medición de la señal, sin redes** (ver `BITACORA.md`). Decide si vale la pena cualquier optimizador guiado por la distancia U_k.
+
+**B. Ataque directo al objetivo (sin RL):**
+5. **Enumeración exhaustiva de U_5 en 25 ≤ n ≤ 33** con hash y cascada U_3 → U_4 → U_5, al estilo Heil–Ji. Son ~4,7·10¹¹ árboles; la segunda opinión estima ~10⁴ h-núcleo (extrapolado, sin verificar) en el NLHPC. Decide la Conjetura 15 para m = 5. Primero, un piloto con n = 25–28.
+6. **Atajo bicentroidal:** pares de mitades con raíz unidas por una arista, con U^r de cada mitad precalculado (Lemas 2 y 5 de arXiv:2002.08186). Son ~7,8·10⁷ pares de mitades con n = 26 y ~3,9·10⁹ con n = 30.
+7. **Estructura algebraica.** Clasificar los 4.765 choques de U₃ y los 6 de U₄ con n = 24: ¿son todos intercambios de ramas entre centroides, como Y/Z? Con eso, una biblioteca de «ramas casi intercambiables» al estilo Schwenk–McKay.
+8. **Podar con lo ya probado:** orugas, arañas, diámetro ≤ 5 y árboles con dos vértices de grado ≥ 3.
+
 ## Riesgos metodológicos (y qué se reporta)
 
 - **Penalización −10⁶ con selección por percentil.** Solo importa el orden. El riesgo está en la élite sin tope cuando hay empates arriba. Se reportan `n_elite`, `iso` y `super_distintos`.
