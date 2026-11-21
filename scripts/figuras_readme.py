@@ -399,8 +399,103 @@ def fig_yz(modo):
     guardar(fig, "par-u4-n22", modo)
 
 
+
+# ----------------------------------------------------------------------------------------
+# 9. Codificacion por padres (como en la presentacion: [0 0 0 3 3 1 0])
+# ----------------------------------------------------------------------------------------
+def fig_codificacion(modo):
+    t = TEMAS[modo]
+    estilo(t)
+    pos = {0: (0, 0.5), 1: (-0.9, -0.5), 2: (0.9, -0.25), 3: (1.0, 0.95), 4: (1.9, 1.3), 5: (2.15, 0.55),
+           6: (-0.55, -1.45), 7: (-1.45, 1.35)}
+    padres = [None, 0, 0, 0, 3, 3, 1, 0]
+    pasos = [1, 4, 7]
+    fig, axs = plt.subplots(1, 3, figsize=(14, 4.4))
+    for ax, m in zip(axs, pasos):
+        sin_ejes(ax)
+        for v in range(1, m + 1):
+            (x1, y1), (x2, y2) = pos[padres[v]], pos[v]
+            nuevo_ = v == m
+            ax.plot([x1, x2], [y1, y2], color=t["serie"][1] if nuevo_ else t["tinta"], lw=3 if nuevo_ else 2,
+                    zorder=1)
+        for v, (x, y) in pos.items():
+            puesto = v == 0 or v <= m
+            ax.scatter([x], [y], s=70, color=t["tinta"] if puesto else t["gris"], zorder=2)
+            ax.text(x - 0.12, y + 0.12, str(v), fontsize=11, color=t["tinta2"], ha="right")
+        cod = [str(padres[v]) for v in range(1, m + 1)]
+        ax.text(0.35, -2.15, "[ " + " ".join(cod[:-1]) + (" " if m > 1 else ""), ha="right", fontsize=15,
+                color=t["tinta"], family="monospace")
+        ax.text(0.35, -2.15, cod[-1], ha="left", fontsize=15, color=t["serie"][1], family="monospace",
+                fontweight="bold")
+        ax.text(0.35 + 0.22, -2.15, " ]", ha="left", fontsize=15, color=t["tinta"], family="monospace")
+        ax.set_title(f"vértice {m} elige a su padre: {padres[m]}", pad=8)
+        ax.set_xlim(-1.9, 2.5)
+        ax.set_ylim(-2.5, 1.7)
+    fig.text(0.01, -0.04, "El vértice i elige a su padre entre 0, …, i − 1. El árbol queda escrito como la lista "
+             "de padres, y cada lista da un árbol (pueden repetirse árboles isomorfos).", fontsize=11.5,
+             color=t["tinta2"])
+    guardar(fig, "codificacion", modo)
+
+
+# ----------------------------------------------------------------------------------------
+# 10. Pares de grafos con ciclos: N = 5 (unico), N = 6 y 7 (los de la presentacion)
+# ----------------------------------------------------------------------------------------
+def fig_pares_grafos(modo):
+    t = TEMAS[modo]
+    estilo(t)
+    n5 = json.load(open(VT / "grafos_n5.json"))["ejemplos"][0]["grafos"]
+    pares = {
+        5: [[tuple(e) for e in g] for g in n5],
+        6: [[(0, 1), (0, 2), (1, 2), (2, 3), (2, 4), (3, 4), (4, 5)],
+            [(0, 1), (1, 2), (1, 3), (2, 3), (2, 4), (3, 4), (4, 5)]],
+        7: [[(0, 1), (1, 2), (1, 3), (2, 3), (3, 4), (4, 5), (5, 3), (3, 6)],
+            [(0, 1), (1, 2), (1, 3), (2, 3), (1, 4), (3, 4), (3, 5), (4, 6)]],
+    }
+    fig, axs = plt.subplots(2, 3, figsize=(12, 6.4))
+    for j, (n, (a, b)) in enumerate(pares.items()):
+        for i, E in enumerate((a, b)):
+            ax = axs[i, j]
+            sin_ejes(ax)
+            G = nx.Graph()
+            G.add_nodes_from(range(n))
+            G.add_edges_from(E)
+            p = nx.kamada_kawai_layout(G)
+            nx.draw_networkx_edges(G, p, ax=ax, edge_color=t["serie"][i], width=2.5)
+            nx.draw_networkx_nodes(G, p, ax=ax, node_color=t["serie"][i], node_size=110,
+                                   edgecolors=t["fondo"], linewidths=2)
+            ax.set_title(f"N = {n}" if i == 0 else "", fontsize=14, loc="center")
+            ax.margins(0.15)
+    fig.text(0.01, -0.03, "Cada columna: dos grafos no isomorfos con el mismo X_G. Con N = 5 es el único par "
+             "que existe; los de N = 6 y 7 son los de la presentación (comprobados).", fontsize=11.5,
+             color=t["tinta2"])
+    guardar(fig, "pares-grafos", modo)
+
+
+# ----------------------------------------------------------------------------------------
+# 11. El contraejemplo de N = 19 que encuentra la replica
+# ----------------------------------------------------------------------------------------
+def fig_contraejemplo(modo):
+    t = TEMAS[modo]
+    estilo(t)
+    d = json.load(open(KG / "validacion" / "resultados" / "01_wagner_conj21" / "wagner_fit_seed0" /
+                       "mejor_grafo.json"))
+    G = nx.Graph([tuple(e) for e in d["aristas"]])
+    fig, ax = plt.subplots(figsize=(8, 5.6))
+    sin_ejes(ax)
+    p = nx.kamada_kawai_layout(G)
+    grandes = [v for v in G if G.degree(v) >= 9]
+    nx.draw_networkx_edges(G, p, ax=ax, edge_color=t["serie"][0], width=2.2)
+    nx.draw_networkx_nodes(G, p, ax=ax, node_color=t["serie"][0], node_size=90, edgecolors=t["fondo"],
+                           linewidths=2)
+    nx.draw_networkx_nodes(G, p, nodelist=grandes, ax=ax, node_color=t["serie"][1], node_size=220,
+                           edgecolors=t["fondo"], linewidths=2)
+    ax.set_title(f"Contraejemplo con N = 19:  λ₁ = √10 ≈ {d['lambda1']:.3f},  μ = {d['mu']},  "
+                 f"√18 + 1 − λ₁ − μ = +{d['score']:.4f} > 0".replace(".", ","), fontsize=12, loc="center")
+    guardar(fig, "contraejemplo-n19", modo)
+
 if __name__ == "__main__":
     for modo in TEMAS:
-        for f in (fig_upolinomio, fig_uk, fig_phi, fig_pares, fig_metodos, fig_colapso, fig_wagner, fig_yz):
+        for f in (fig_upolinomio, fig_uk, fig_phi, fig_pares, fig_metodos, fig_colapso, fig_wagner, fig_yz,
+                  fig_codificacion, fig_pares_grafos, fig_contraejemplo):
             f(modo)
     print("listo:", sorted(p.name for p in SALIDA.glob("*.png")))
