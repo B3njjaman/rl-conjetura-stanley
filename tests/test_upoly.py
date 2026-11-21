@@ -147,3 +147,24 @@ def test_uk_lote_y_hash_agrupan_igual():
         for i, h in enumerate(H):
             por_hash.setdefault(int(h), []).append(i)
         assert sorted(map(tuple, por_vector.values())) == sorted(map(tuple, por_hash.values())), (n, k)
+
+
+def test_uk_valida_la_entrada():
+    from stanley_rl.upoly import uk_lote
+    for malo in ([], [0, -1, 1], [0, 0, 2], [0, 5]):
+        with pytest.raises(ValueError):
+            uk_arbol(malo, 1)
+    with pytest.raises(ValueError):
+        uk_lote(np.zeros((3, 0), dtype=np.int64), 1)
+    with pytest.raises(ValueError):
+        uk_arbol([0, 0, 1], -1)
+    # k mayor que n - 1 se normaliza (no reserva memoria de mas)
+    assert list(uk_arbol([0, 0, 1, 1, 3], 10 ** 8)) == list(uk_arbol([0, 0, 1, 1, 3], 4))
+    assert list(uk_arbol([0], 3)) == [1]
+
+
+def test_tabla_no_confunde_celdas_vacias():
+    from stanley_rl.upoly import _indice_tabla, tabla_arboles
+    base, r, claves, valores, bits = tabla_arboles(4, 1)
+    with pytest.raises(ValueError):
+        _indice_tabla(np.uint64(0), claves, valores, bits)

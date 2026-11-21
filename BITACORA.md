@@ -88,7 +88,29 @@ números aleatorios de 64 bits y una tabla hash, sin ordenar ni buscar. El vecto
 | 30 | 5 | 146.596 | 25,0 | 2,7 | 2,1 |
 | 34 | 5 | 284.274 | 41,9 | 3,6 | 2,7 |
 
-Un hilo, árboles al azar. La enumeración de la verdad de terreno usa el hash directo y da los mismos
+Un hilo, árboles al azar; el «antes» varió entre 42 y 61 ms con n = 34 según la corrida.
+
+**Validación externa** (`tests/test_aliste_yz.py`): se construyen los pares $Y_{k,l}$, $Z_{k,l}$ de
+Aliste-Prieto, de Mier y Zamora (arXiv:2002.08186, ec. 14 y 16). Con el código, tienen el mismo $U_{k+l+2}$ y
+distinto $U_{k+l+3}$ para (k, l) = (0,0), (1,0), (0,1), (2,0), (1,1), (2,1) y (1,2), como dice su Teorema 12;
+(2,1) es el par conjeturado mínimo con $U_5$ (n = 34). Además, el único par que encontró la enumeración
+completa con n = 10 (k = 2) y con n = 16 (k = 3) es exactamente su Y/Z.
+
+**Revisión de Codex**: sin errores en árboles válidos; comparó con fuerza bruta los 7.661 casos de n ≤ 7, todo k.
+Se corrigieron sus hallazgos con entradas inválidas: validar los padres antes de Numba, que no revisa límites;
+normalizar k ≤ n − 1; exigir bloque ≥ 1 y kmax ≥ 3; que la tabla no confunda una celda vacía con S = 0; no
+usar `assert` para la inyectividad. El hash de 64 bits no garantiza 2⁻⁶⁴ porque los pesos son fijos. Por eso se usa
+solo como filtro: los pares se confirman con el vector exacto. Codex propone una DP sobre el árbol, que en su
+prototipo fue 4 veces más rápida que la enumeración con n = 34 y 8 veces con n = 26 (pendiente).
+
+**Línea base de H3 con padres uniformes**, exacta (`scripts/verdad_terreno/azar_arboles.py`; la fórmula se
+comprueba contra los (n − 1)! árboles recursivos con n ≤ 8): la probabilidad por sesión de sacar el par es
+7,5·10⁻⁸ con n = 16, 1,7·10⁻⁹ con n = 17 y 2,3·10⁻⁸ con n = 18. En 3·10⁶ sesiones, que son 3.000
+iteraciones, eso da **20 %**, 0,5 % y 6,5 % de corridas con un par por azar. Con n = 16 el azar ya basta
+para 2 de 10 semillas: la prueba que discrimina son n = 17 y 18. Como la red sin entrenar no es uniforme,
+se lanza el control con lr = 0 y las mismas semillas (lote `h3_control`).
+
+La enumeración de la verdad de terreno usa el hash directo y da los mismos
 resultados con n = 16–19 (n = 19: de 13,7 s a 3,0 s con 2 hilos). Las corridas de Kaggle lanzadas antes
 (commits 15e5b65, 4f54e9b8 y 653bd417) usan la versión anterior: el resultado es el mismo, solo cambia el
 tiempo.

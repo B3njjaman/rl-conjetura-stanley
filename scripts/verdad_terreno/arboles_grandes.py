@@ -116,6 +116,8 @@ def main():
     ap.add_argument("--kmax", type=int, default=8)
     ap.add_argument("--bloque", type=int, default=250_000)
     a = ap.parse_args()
+    if a.kmax < 3 or a.bloque < 1:
+        ap.error("--kmax >= 3 (el primer filtro es U_3) y --bloque >= 1")
     SALIDA.mkdir(parents=True, exist_ok=True)
     for n in a.n:
         r = correr(n, a.kmax, a.bloque)

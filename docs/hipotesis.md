@@ -13,7 +13,7 @@ Síntesis de dos revisiones independientes, una de Codex (GPT-6.2 Astra) y otra 
 | Enfoque 2, N = 24, k = 3 y 4 | Con U₄ el par mínimo tiene n = 22 ✔ (Smith, Smith y Tian 2015, arXiv:1505.01889; Aliste-Prieto, de Mier y Zamora 2020, arXiv:2002.08186). La enumeración completa de n = 20 a 24 está corriendo en Kaggle. | Con el total de pares que existen, un resultado nulo pasa a ser medible. |
 | «La conjetura podría ser verdadera» | n ≤ 29 ya está verificado (Heil y Ji). | Es una frase vacía. Se elimina. |
 
-## Hipótesis (en las que coinciden ambas revisiones)
+## Hipótesis (las 5 aparecen en ambas revisiones; difiere la prioridad)
 
 **H1. Validación.** El ajuste estilo Wagner (SGD 1e-4, minilotes de 32, selección con tope) llega a +0.0804 en N = 19, y el Adam de un paso de la tesis no.
 - **Métrica:** tasa de éxito por semilla.
@@ -25,11 +25,13 @@ Síntesis de dos revisiones independientes, una de Codex (GPT-6.2 Astra) y otra 
 - **Se refuta si:** el recall del Cross-Entropy es menor o igual al del control.
 - **Estado:** lote `enfoque1`, con controles de lr = 0.
 
-**H3. ¿Encuentra el Enfoque 2 pares que existen?** (prioridad 1 según ambas revisiones). En árboles con k = 3 y n = 16, 17 y 18, el método encuentra un par muy por sobre lo que daría el azar.
-- **Base:** con padres uniformes, la probabilidad por sesión es de 10⁻⁷ a 10⁻⁹ según Fable [por verificar con un cálculo exacto].
+**H3. ¿Encuentra el Enfoque 2 pares que existen?** (prioridad 1 para Fable y para Claude; Codex prefería partir por H2, que es más barata). En árboles con k = 3 y n = 16, 17 y 18, el método encuentra un par muy por sobre lo que daría el azar.
+- **Base (exacta):** con padres uniformes, la probabilidad por sesión es 7,5·10⁻⁸ (n = 16), 1,7·10⁻⁹ (n = 17) y 2,3·10⁻⁸ (n = 18). En 3.000 iteraciones eso da 20 %, 0,5 % y 6,5 % de corridas con éxito por azar (`resultados/verdad_terreno/azar_arboles_k3.json`). Con n = 16 el azar ya explica unas 2 de 10 semillas: **la evidencia está en n = 17 y 18**.
+- **Control:** lote `h3_control`, igual pero con lr = 0, porque la red sin entrenar no es uniforme.
+- **Se refuta si:** la tasa de éxito con aprendizaje no supera a la del control en n = 17 y 18.
 - **Diseño:** 10 semillas fijadas antes de correr (101 a 110), 3.000 iteraciones, y la corrida para cuando encuentra todos los pares que existen.
 - **Métricas:** tasa de éxito por semilla e iteraciones hasta el primer par.
-- **Estado:** lote `h3_arboles`, 30 corridas.
+- **Estado:** lotes `h3_arboles` y `h3_control`, 30 corridas cada uno.
 
 **H4. Óptimo conocido sin colisión.** Con N = 12 y k = 3, la distancia mínima entre árboles no isomorfos es √6 ≈ 2,449 (3 pares, según el cálculo de Fable [por verificar]).
 - **Pregunta:** ¿llega el método a ese óptimo, o se queda atascado o colapsa a T₁ ≅ T₂?
@@ -41,7 +43,10 @@ Síntesis de dos revisiones independientes, una de Codex (GPT-6.2 Astra) y otra 
 ## Objetivo estrella (decisión de Benja con sus profes)
 
 **Buscar con RL pares de árboles con igual U₅ y n < 34.** La Conjetura 15 de Aliste-Prieto, de Mier y Zamora (2020) ✔ dice que el par más chico con igual U₅ tiene 34 vértices, y su Proposición 16(c) dice que esa conjetura implicaría la de Stanley.
-- **Por qué no se puede enumerar:** de n = 26 a 33 hay entre 10⁹ y 10¹¹ árboles. La búsqueda dirigida es justamente el caso de uso del método.
+- **Dos frentes que se complementan:** de n = 26 a 33 hay entre 2,8·10⁸ y 3·10¹¹ árboles.
+  - Con el $U_k$ incremental, la enumeración exhaustiva en cascada ($U_3$ → $U_4$ → $U_5$) parece viable en el NLHPC hasta n ≈ 29–31; el número exacto sale de un piloto.
+  - El RL busca donde ya no alcanza la enumeración, con un recall calibrado en los tramos donde sí alcanza.
+- **Control positivo a escala:** el par $Y_{2,1}$, $Z_{2,1}$ de n = 34, que el código ya verifica (mismo $U_5$, distinto $U_6$).
 - **Qué aporta:** un hallazgo refutaría la conjetura del profesor guía. Un resultado nulo quedaría calibrado por el recall medido en H3 (k = 3) y con k = 4 y n = 22 a 24.
 - **Dónde correrlo:** es un buen uso del NLHPC.
 

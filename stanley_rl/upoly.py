@@ -342,7 +342,8 @@ def tabla_arboles(n, k):
         for x in p:
             s = (s + int(r[x])) & _MASK64
         sumas.append(s)
-    assert len(set(sumas)) == len(sumas), "S no es inyectiva sobre la base: cambiar la semilla"
+    if len(set(sumas)) != len(sumas):
+        raise RuntimeError("S no es inyectiva sobre la base: cambiar la semilla de _azar_tamanos")
     bits = max(4, int(np.ceil(np.log2(4 * len(base)))))
     claves = np.zeros(1 << bits, dtype=np.uint64)
     valores = -np.ones(1 << bits, dtype=np.int64)
@@ -404,11 +405,13 @@ def _preorden(padres, n):
 def _indice_tabla(S, claves, valores, bits):
     mascara = (1 << bits) - 1
     j = _sonda(S, bits)
-    while claves[j] != S:
-        if valores[j] < 0:
+    while True:                                  # carga <= 1/4: siempre hay celdas vacias
+        v = valores[j]
+        if v < 0:                                # celda vacia (tambien tiene clave 0): S no esta
             raise ValueError("particion fuera de la base")
+        if claves[j] == S:
+            return v
         j = (j + 1) & mascara
-    return valores[j]
 
 
 @njit(cache=True)
@@ -482,10 +485,23 @@ def _uk_inc(padres, n, k, r, claves, valores, bits, dim, solo_hash):
             nivel -= 1
 
 
+def _validar(P, k):
+    """Numba no revisa limites: se valida antes de entrar. Devuelve (P, n, k normalizado)."""
+    P = np.ascontiguousarray(P, dtype=np.int64)
+    if P.ndim != 2 or P.shape[1] < 1:
+        raise ValueError("se espera una matriz de padres con n >= 1 columnas")
+    n = P.shape[1]
+    if n > 1 and ((P[:, 1:] < 0) | (P[:, 1:] >= np.arange(1, n))).any():
+        raise ValueError("cada arbol debe cumplir 0 <= padres[i] < i para i >= 1")
+    if int(k) != k or k < 0:
+        raise ValueError("k debe ser un entero >= 0")
+    return P, n, min(int(k), n - 1)              # con mas de n - 1 cortes no cambia nada
+
+
 def uk_arbol(padres, k):
     """Vector del U restringido de nivel k del arbol dado por padres (padres[i] < i)."""
-    padres = np.asarray(padres, dtype=np.int64)
-    n = len(padres)
+    P, n, k = _validar(np.asarray(padres).reshape(1, -1), k)
+    padres = P[0]
     base, r, claves, valores, bits = tabla_arboles(n, k)
     return _uk_inc(padres, n, k, r, claves, valores, bits, len(base), False)[0]
 
@@ -500,8 +516,7 @@ def _uk_lote(P, n, k, r, claves, valores, bits, dim):
 
 def uk_lote(P, k):
     """U_k de muchos arboles a la vez (filas de P = arreglos de padres), en paralelo."""
-    P = np.ascontiguousarray(P, dtype=np.int64)
-    n = P.shape[1]
+    P, n, k = _validar(P, k)
     base, r, claves, valores, bits = tabla_arboles(n, k)
     return _uk_lote(P, n, k, r, claves, valores, bits, len(base))
 
@@ -516,9 +531,10 @@ def _uk_hash_lote(P, n, k, r, claves, valores, bits):
 
 def uk_hash_lote(P, k):
     """Hash de 64 bits del U_k de cada arbol (igual U_k => igual hash; distinto U_k => distinto hash
-    salvo con probabilidad ~2^-64). Para enumeraciones y para la memoria de colisiones."""
-    P = np.ascontiguousarray(P, dtype=np.int64)
-    n = P.shape[1]
+    con muy poca probabilidad; los pesos son fijos, asi que un choque seria determinista y no hay
+    garantia de 2^-64). Sirve como FILTRO: los candidatos se confirman con el vector exacto. Las
+    coordenadas del vector caben en int64 en el rango de uso (n <= 34, k <= 6)."""
+    P, n, k = _validar(P, k)
     base, r, claves, valores, bits = tabla_arboles(n, k)
     return _uk_hash_lote(P, n, k, r, claves, valores, bits)
 

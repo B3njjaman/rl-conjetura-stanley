@@ -58,6 +58,11 @@ LOTES = {
     # H3 (pre-registrada, semillas 101-110): ¿el metodo halla pares de arboles que se sabe que existen?
     "h3_arboles": [e2(n, 3, s, 3000, 1.25 * H, total=PARES_U3[n], carpeta="04_h3_arboles")
                    for n in (16, 17, 18) for s in range(101, 111)],
+    # control de H3: lo mismo con lr = 0 (la red sin entrenar, politica fija), mismas semillas.
+    # Con padres uniformes, P(hallar el par en 3e6 sesiones) = 0.20 (n=16), 0.005 (17), 0.065 (18):
+    # resultados/verdad_terreno/azar_arboles_k3.json
+    "h3_control": [e2(n, 3, s, 3000, 1.25 * H, control=True, total=PARES_U3[n], carpeta="04_h3_arboles")
+                   for n in (16, 17, 18) for s in range(101, 111)],
     "verdad_terreno": [("arboles_n20_24", "NUMBA_NUM_THREADS=4 python scripts/verdad_terreno/arboles_grandes.py "
                                           "--n 20 21 22 23 24 --kmax 10 --bloque 250000")],
     "humo": [val("notebook", 0, 4, 600), val("wagner_fit", 0, 3, 600),

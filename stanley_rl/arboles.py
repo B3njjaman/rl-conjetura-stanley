@@ -109,6 +109,8 @@ def arboles(n, bloque=500_000, dtype=np.int64):
     """Itera bloques (matriz de padres) con todos los arboles no isomorfos de n >= 3 vertices."""
     if n < 3:
         raise ValueError("n >= 3")
+    if bloque < 1:
+        raise ValueError("bloque >= 1")
     c = np.array(list(range(n // 2 + 1)) + list(range(1, (n + 1) // 2)), dtype=np.int64)
     while True:
         out = np.empty((bloque, n), dtype=np.int64)
