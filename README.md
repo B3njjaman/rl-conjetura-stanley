@@ -69,7 +69,7 @@ Calcular $U$ entero cuesta $2^{n-1}$ subconjuntos. El truncado solo quita **a lo
 
 - Aliste-Prieto, de Mier y Zamora (2021) construyen pares $Y/Z$ con 7, 10, 16, 22, 34, … vértices (Teorema 12).
 - Su **Conjetura 15** dice que esos son los más chicos. Si es cierta, Stanley es cierta (Prop. 16).
-- Este repo midió los mínimos para $k \le 4$ enumerando todos los árboles y calzan con $Y/Z$. Para $k = 5$ no hay pares hasta $n = 24$.
+- Este repo midió los mínimos para $k$ de 1 a 4 enumerando todos los árboles, y calzan con $Y/Z$. Para $k = 5$ no hay pares hasta $n = 24$.
 - **Un par con igual $U_5$ y menos de 34 vértices tumba la Conjetura 15.** Ese es el blanco.
 
 ### Aprendizaje reforzado y la idea de Wagner
@@ -80,9 +80,9 @@ Calcular $U$ entero cuesta $2^{n-1}$ subconjuntos. El truncado solo quita **a lo
 - **Entrenamiento:** *Cross-Entropy*. De 1.000 grafos se queda con el mejor 7 % y aprende a imitarlo.
 
 ```mermaid
-flowchart LR
-    A["Inicializar π_θ"] --> B["Generar grafos"] --> C["Evaluar"] --> D["Élite"] --> E["Actualizar"]
-    E --> B
+flowchart TD
+    A["Inicializar π_θ"] --> B["Generar 1.000 grafos"] --> C["Evaluar la recompensa"] --> D["Élite: el mejor 7 %"] --> E["Actualizar la red"]
+    E -->|"siguiente iteración"| B
 ```
 
 ---
