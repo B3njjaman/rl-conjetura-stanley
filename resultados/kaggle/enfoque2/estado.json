@@ -1,0 +1,35 @@
+{
+ "commit": "15e5b656ce9fc3e87c0797b856161794332ad3bc",
+ "estado": {
+  "e2_N12_k3_s0": {
+   "codigo": 0,
+   "segundos": 940
+  },
+  "e2_N12_k3_s1": {
+   "codigo": 0,
+   "segundos": 870
+  },
+  "e2_N12_k3_s2": {
+   "codigo": 0,
+   "segundos": 840
+  },
+  "e2_N24_k3_s1_control": {
+   "codigo": 0,
+   "segundos": 14412
+  },
+  "e2_N24_k4_s0": {
+   "codigo": 0,
+   "segundos": 37464
+  },
+  "e2_N24_k4_s1": {
+   "codigo": 0,
+   "segundos": 37464
+  },
+  "e2_N24_k3_s0": {
+   "codigo": 0,
+   "segundos": 37464
+  }
+ },
+ "pendientes": [],
+ "activos": []
+}

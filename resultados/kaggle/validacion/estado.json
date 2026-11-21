@@ -1,0 +1,31 @@
+{
+ "commit": "15e5b656ce9fc3e87c0797b856161794332ad3bc",
+ "estado": {
+  "wagner_notebook_s0": {
+   "codigo": 137,
+   "segundos": 4991
+  },
+  "wagner_notebook_s1": {
+   "codigo": 137,
+   "segundos": 5101
+  },
+  "wagner_notebook_s2": {
+   "codigo": 137,
+   "segundos": 5451
+  },
+  "wagner_wagner_fit_s1": {
+   "codigo": 0,
+   "segundos": 18863
+  },
+  "wagner_wagner_fit_s0": {
+   "codigo": 0,
+   "segundos": 20243
+  },
+  "wagner_wagner_fit_s2": {
+   "codigo": 0,
+   "segundos": 37454
+  }
+ },
+ "pendientes": [],
+ "activos": []
+}

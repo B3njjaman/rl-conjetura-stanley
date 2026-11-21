@@ -1,0 +1,6 @@
+N=6: mismo U(x,0)=True, isomorfos=False, conexos=True, esta entre los 9 de la verdad de terreno=True
+N=7: mismo U(x,0)=True, isomorfos=False, conexos=True, esta entre los 20 de la verdad de terreno=True
+N=12 k=3 presentacion: isomorfos=False, distancia L2=16.6132
+N=12 k=3 exhaustivo: 551 arboles, distancia minima=2.4495 (sqrt6=2.4495), pares en el minimo=3
+N=24 k=3 presentacion: n=24,24 isomorfos=False, distancia L2=236.5502
+N=24 k=4 presentacion: n=24,24 isomorfos=False, distancia L2=669.7193

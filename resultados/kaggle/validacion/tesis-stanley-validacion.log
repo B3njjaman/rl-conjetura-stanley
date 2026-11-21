@@ -1,0 +1,59 @@
+[{"stream_name":"stdout","time":10.170156492,"data":"commit 15e5b656ce9fc3e87c0797b856161794332ad3bc | cpus 4 | numpy 2.1.3 | numba 0.61.2 | torch 2.11.0+cpu | networkx 3.7\n"}
+,{"stream_name":"stdout","time":10.170867487,"data":"[      0s] inicia wagner_wagner_fit_s0: python scripts/01_wagner_conj21/correr.py --modo wagner_fit --seed 0 --iters 30000 --tiempo-max 37440.0 --hilos 1 --guardar-cada 20 --pkl-cada 1000\n"}
+,{"stream_name":"stdout","time":10.171700414,"data":"[      0s] inicia wagner_wagner_fit_s1: python scripts/01_wagner_conj21/correr.py --modo wagner_fit --seed 1 --iters 30000 --tiempo-max 37440.0 --hilos 1 --guardar-cada 20 --pkl-cada 1000\n"}
+,{"stream_name":"stdout","time":10.173909101,"data":"[      0s] inicia wagner_wagner_fit_s2: python scripts/01_wagner_conj21/correr.py --modo wagner_fit --seed 2 --iters 30000 --tiempo-max 37440.0 --hilos 1 --guardar-cada 20 --pkl-cada 1000\n"}
+,{"stream_name":"stdout","time":10.173929952,"data":"[      0s] inicia wagner_notebook_s0: python scripts/01_wagner_conj21/correr.py --modo notebook --seed 0 --iters 3000 --tiempo-max 11880.0 --hilos 1 --guardar-cada 20 --pkl-cada 1000\n"}
+,{"stream_name":"stdout","time":5001.039009878,"data":"[   4991s] termina wagner_notebook_s0 codigo 137\n"}
+,{"stream_name":"stdout","time":5001.043233878,"data":"device: cpu\n"}
+,{"stream_name":"stdout","time":5001.043255154,"data":"[notebook_seed0] modo=notebook seed=0 iters=3000 tiempo_max=11880.0 hilos=1 device=cpu\n"}
+,{"stream_name":"stdout","time":5001.043276154,"data":"[notebook_seed0] iter    0 | mejor -11.0846 | top100 -11.9244 | loss 0.6861 | elite 70 super 60 (distintos 60)\n"}
+,{"stream_name":"stdout","time":5001.043283275,"data":"[notebook_seed0] iter   50 | mejor -2.7012 | top100 -4.2562 | loss 0.2970 | elite 75 super 64 (distintos 64)\n"}
+,{"stream_name":"stdout","time":5001.043291342,"data":"[notebook_seed0] iter  100 | mejor -1.1067 | top100 -31.7952 | loss 0.1537 | elite 75 super 64 (distintos 64)\n"}
+,{"stream_name":"stdout","time":5001.043298228,"data":"[notebook_seed0] iter  150 | mejor -1.1067 | top100 -1.3930 | loss 0.0859 | elite 75 super 66 (distintos 66)\n"}
+,{"stream_name":"stdout","time":5001.043304266,"data":"[notebook_seed0] iter  200 | mejor -0.4803 | top100 -0.6629 | loss 0.0730 | elite 75 super 68 (distintos 64)\n"}
+,{"stream_name":"stdout","time":5001.043310474,"data":"[notebook_seed0] iter  250 | mejor -0.4803 | top100 -0.4921 | loss 0.0589 | elite 76 super 76 (distintos 46)\n"}
+,{"stream_name":"stdout","time":5001.043316332,"data":"[notebook_seed0] iter  300 | mejor -0.4803 | top100 -0.4803 | loss 0.0501 | elite 493 super 493 (distintos 113)\n"}
+,{"stream_name":"stdout","time":5001.043322087,"data":"[notebook_seed0] iter  350 | mejor -0.4803 | top100 -0.4803 | loss 0.0271 | elite 4786 super 4786 (distintos 170)\n"}
+,{"stream_name":"stdout","time":5001.043328481,"data":"[notebook_seed0] iter  400 | mejor -0.4803 | top100 -0.4803 | loss 0.0203 | elite 13815 super 13815 (distintos 210)\n"}
+,{"stream_name":"stdout","time":5001.043334142,"data":"Killed\n"}
+,{"stream_name":"stdout","time":5001.043340206,"data":"\n"}
+,{"stream_name":"stdout","time":5001.131658568,"data":"[   4991s] inicia wagner_notebook_s1: python scripts/01_wagner_conj21/correr.py --modo notebook --seed 1 --iters 3000 --tiempo-max 11880.0 --hilos 1 --guardar-cada 20 --pkl-cada 1000\n"}
+,{"stream_name":"stdout","time":10101.937707379,"data":"[  10092s] termina wagner_notebook_s1 codigo 137\n"}
+,{"stream_name":"stdout","time":10101.940089539,"data":"device: cpu\n"}
+,{"stream_name":"stdout","time":10101.940172769,"data":"[notebook_seed1] modo=notebook seed=1 iters=3000 tiempo_max=11880.0 hilos=1 device=cpu\n"}
+,{"stream_name":"stdout","time":10101.940185289,"data":"[notebook_seed1] iter    0 | mejor -11.0323 | top100 -11.9081 | loss 0.6895 | elite 70 super 60 (distintos 60)\n"}
+,{"stream_name":"stdout","time":10101.940213167,"data":"[notebook_seed1] iter   50 | mejor -2.1705 | top100 -3.9152 | loss 0.2587 | elite 75 super 64 (distintos 64)\n"}
+,{"stream_name":"stdout","time":10101.940219882,"data":"[notebook_seed1] iter  100 | mejor -1.2679 | top100 -1.8552 | loss 0.1345 | elite 75 super 64 (distintos 64)\n"}
+,{"stream_name":"stdout","time":10101.940226524,"data":"[notebook_seed1] iter  150 | mejor -1.1285 | top100 -1.5112 | loss 0.0791 | elite 75 super 66 (distintos 62)\n"}
+,{"stream_name":"stdout","time":10101.940233067,"data":"[notebook_seed1] iter  200 | mejor -1.1285 | top100 -1.2061 | loss 0.0476 | elite 105 super 105 (distintos 31)\n"}
+,{"stream_name":"stdout","time":10101.940239196,"data":"[notebook_seed1] iter  250 | mejor -1.1285 | top100 -1.2061 | loss 0.0400 | elite 193 super 193 (distintos 19)\n"}
+,{"stream_name":"stdout","time":10101.940244976,"data":"[notebook_seed1] iter  300 | mejor -1.1285 | top100 -1.2061 | loss 0.0123 | elite 3818 super 3818 (distintos 9)\n"}
+,{"stream_name":"stdout","time":10101.94025128,"data":"[notebook_seed1] iter  350 | mejor -1.1285 | top100 -1.2061 | loss 0.0087 | elite 12933 super 12933 (distintos 11)\n"}
+,{"stream_name":"stdout","time":10101.940257327,"data":"Killed\n"}
+,{"stream_name":"stdout","time":10101.940278551,"data":"\n"}
+,{"stream_name":"stdout","time":10102.021046752,"data":"[  10092s] inicia wagner_notebook_s2: python scripts/01_wagner_conj21/correr.py --modo notebook --seed 2 --iters 3000 --tiempo-max 11880.0 --hilos 1 --guardar-cada 20 --pkl-cada 1000\n"}
+,{"stream_name":"stdout","time":15552.773926867,"data":"[  15543s] termina wagner_notebook_s2 codigo 137\n"}
+,{"stream_name":"stdout","time":15552.776825896,"data":"device: cpu\n"}
+,{"stream_name":"stdout","time":15552.776861336,"data":"[notebook_seed2] modo=notebook seed=2 iters=3000 tiempo_max=11880.0 hilos=1 device=cpu\n"}
+,{"stream_name":"stdout","time":15552.776869124,"data":"[notebook_seed2] iter    0 | mejor -11.0991 | top100 -12.4820 | loss 0.6972 | elite 70 super 60 (distintos 60)\n"}
+,{"stream_name":"stdout","time":15552.776875202,"data":"[notebook_seed2] iter   50 | mejor -2.7660 | top100 -4.1169 | loss 0.2919 | elite 75 super 64 (distintos 64)\n"}
+,{"stream_name":"stdout","time":15552.776881193,"data":"[notebook_seed2] iter  100 | mejor -1.2460 | top100 -1.6786 | loss 0.1401 | elite 75 super 65 (distintos 65)\n"}
+,{"stream_name":"stdout","time":15552.776887038,"data":"[notebook_seed2] iter  150 | mejor -1.2068 | top100 -1.3943 | loss 0.0880 | elite 75 super 65 (distintos 63)\n"}
+,{"stream_name":"stdout","time":15552.776892939,"data":"[notebook_seed2] iter  200 | mejor -1.2068 | top100 -1.2707 | loss 0.0537 | elite 75 super 66 (distintos 35)\n"}
+,{"stream_name":"stdout","time":15552.776898871,"data":"[notebook_seed2] iter  250 | mejor -1.2068 | top100 -1.2068 | loss 0.0384 | elite 399 super 399 (distintos 32)\n"}
+,{"stream_name":"stdout","time":15552.776904907,"data":"[notebook_seed2] iter  300 | mejor -1.2068 | top100 -1.2068 | loss 0.0178 | elite 1602 super 1602 (distintos 11)\n"}
+,{"stream_name":"stdout","time":15552.77691062,"data":"[notebook_seed2] iter  350 | mejor -1.2068 | top100 -1.2068 | loss 0.0122 | elite 8400 super 8400 (distintos 11)\n"}
+,{"stream_name":"stdout","time":15552.776916689,"data":"[notebook_seed2] iter  400 | mejor -1.2068 | top100 -1.2068 | loss 0.0094 | elite 20247 super 20247 (distintos 11)\n"}
+,{"stream_name":"stdout","time":15552.776922988,"data":"Killed\n"}
+,{"stream_name":"stdout","time":15552.776928431,"data":"\n"}
+,{"stream_name":"stdout","time":18873.166203583,"data":"[  18863s] termina wagner_wagner_fit_s1 codigo 0\n"}
+,{"stream_name":"stdout","time":20253.293914445,"data":"[  20243s] termina wagner_wagner_fit_s0 codigo 0\n"}
+,{"stream_name":"stdout","time":37464.640539617,"data":"[  37454s] termina wagner_wagner_fit_s2 codigo 0\n"}
+,{"stream_name":"stdout","time":37464.641455761,"data":"LISTO {\"wagner_notebook_s0\": {\"codigo\": 137, \"segundos\": 4991}, \"wagner_notebook_s1\": {\"codigo\": 137, \"segundos\": 5101}, \"wagner_notebook_s2\": {\"codigo\": 137, \"segundos\": 5451}, \"wagner_wagner_fit_s1\": {\"codigo\": 0, \"segundos\": 18863}, \"wagner_wagner_fit_s0\": {\"codigo\": 0, \"segundos\": 20243}, \"wagner_wagner_fit_s2\": {\"codigo\": 0, \"segundos\": 37454}}\n"}
+,{"stream_name":"stderr","time":37469.274749269,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":37469.274797607,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":37469.662466692,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":37469.662503379,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":37471.703627121,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":37473.022841055,"data":"[NbConvertApp] Writing 288565 bytes to __results__.html\n"}
+]

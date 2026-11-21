@@ -1,0 +1,127 @@
+{
+ "commit": "653bd417bae6565ee9e1ec023e89bb9693eb092a",
+ "estado": {
+  "e2_N16_k3_s102": {
+   "codigo": 0,
+   "segundos": 2350
+  },
+  "e2_N16_k3_s104": {
+   "codigo": 0,
+   "segundos": 2370
+  },
+  "e2_N16_k3_s103": {
+   "codigo": 0,
+   "segundos": 2750
+  },
+  "e2_N16_k3_s101": {
+   "codigo": 0,
+   "segundos": 3350
+  },
+  "e2_N16_k3_s106": {
+   "codigo": 0,
+   "segundos": 1950
+  },
+  "e2_N16_k3_s109": {
+   "codigo": 0,
+   "segundos": 30
+  },
+  "e2_N16_k3_s105": {
+   "codigo": 0,
+   "segundos": 2550
+  },
+  "e2_N16_k3_s107": {
+   "codigo": 0,
+   "segundos": 2370
+  },
+  "e2_N16_k3_s108": {
+   "codigo": 0,
+   "segundos": 2060
+  },
+  "e2_N16_k3_s110": {
+   "codigo": 0,
+   "segundos": 1790
+  },
+  "e2_N17_k3_s101": {
+   "codigo": 0,
+   "segundos": 2690
+  },
+  "e2_N17_k3_s102": {
+   "codigo": 0,
+   "segundos": 2670
+  },
+  "e2_N17_k3_s103": {
+   "codigo": 0,
+   "segundos": 2610
+  },
+  "e2_N17_k3_s104": {
+   "codigo": 0,
+   "segundos": 2670
+  },
+  "e2_N17_k3_s105": {
+   "codigo": 0,
+   "segundos": 2710
+  },
+  "e2_N17_k3_s106": {
+   "codigo": 0,
+   "segundos": 2710
+  },
+  "e2_N17_k3_s107": {
+   "codigo": 0,
+   "segundos": 2670
+  },
+  "e2_N17_k3_s108": {
+   "codigo": 0,
+   "segundos": 2670
+  },
+  "e2_N17_k3_s109": {
+   "codigo": 0,
+   "segundos": 2750
+  },
+  "e2_N17_k3_s110": {
+   "codigo": 0,
+   "segundos": 2680
+  },
+  "e2_N18_k3_s101": {
+   "codigo": 0,
+   "segundos": 3801
+  },
+  "e2_N18_k3_s102": {
+   "codigo": 0,
+   "segundos": 3060
+  },
+  "e2_N18_k3_s103": {
+   "codigo": 0,
+   "segundos": 3140
+  },
+  "e2_N18_k3_s104": {
+   "codigo": 0,
+   "segundos": 3220
+  },
+  "e2_N18_k3_s105": {
+   "codigo": 0,
+   "segundos": 3281
+  },
+  "e2_N18_k3_s106": {
+   "codigo": 0,
+   "segundos": 3571
+  },
+  "e2_N18_k3_s108": {
+   "codigo": 0,
+   "segundos": 3141
+  },
+  "e2_N18_k3_s107": {
+   "codigo": 0,
+   "segundos": 3501
+  },
+  "e2_N18_k3_s109": {
+   "codigo": 0,
+   "segundos": 2730
+  },
+  "e2_N18_k3_s110": {
+   "codigo": 0,
+   "segundos": 2870
+  }
+ },
+ "pendientes": [],
+ "activos": []
+}

@@ -138,6 +138,37 @@ el colapso de la población: las súper sesiones distintas bajan de ~64 a 1 entr
 no aparece ningún par nuevo. H2 queda refutada y H5 confirmada (`docs/hipotesis.md`). Con N ≤ 7 el problema es
 fácil para el azar: el primer par sale en la iteración 0 a 5 con o sin aprendizaje.
 
+## 2026-11-21 (noche, 2) — H1, H3 y H4, azar con memoria y comparación con la presentación
+
+Se bajaron los lotes `validacion`, `enfoque2`, `h3_arboles` y `h3_control` (todos completos; los
+`modelo.pt` quedan fuera del repo por el `.gitignore`). El detalle está en `docs/hipotesis.md`.
+
+- **H1 (N = 19):** el ajuste estilo Wagner llega a +0,0804 en la semilla 0 y a otro contraejemplo
+  (+0,0155) en la 1; la 2 queda en −0,4803. El modo de la tesis queda en −0,4803, −1,13 y −1,21 y muere
+  por memoria cerca de la iteración 400: la selección sin tope (cambio 13) deja crecer la élite a más de 20.000.
+- **H3 (árboles, k = 3):** aprendiendo 2/10, 0/10 y 0/10 en n = 16, 17 y 18; el control lr = 0 da
+  exactamente lo mismo. Refutada según el criterio fijado; con 0 contra 0 solo se descarta un efecto grande.
+- **H4 (N = 12, k = 3):** llega a √6 en 3/3 semillas. Se verificó que √6 es el mínimo exacto enumerando
+  los 551 árboles (3 pares a esa distancia).
+- **N = 24:** 0 pares en 10 h con k = 3 y k = 4, aunque existen 4.765 y 6.
+- **Azar con memoria** (`scripts/verdad_terreno/azar_con_memoria.py`): árboles sueltos con padres
+  uniformes y choques de U₃ buscados en todo el historial. Con el mismo presupuesto (6·10⁶ árboles)
+  encuentra todos los pares de n = 16, 17 y 18 en 10/10 semillas, en segundos. La limitación del
+  Enfoque 2 está en la unidad de búsqueda: solo compara los dos árboles de cada sesión.
+
+**Comparación con la presentación** (`scripts/comparar_presentacion.py`, salida en
+`resultados/comparacion_presentacion.txt`; aristas leídas a ojo de las figuras):
+
+| Lámina | Presentación | Réplica |
+|---|---|---|
+| Wagner, N = 19 | −0,48 («casi contraejemplo») | modo tesis: −0,4803, el mismo valor; ajuste Wagner: +0,0804 |
+| Grafos, N = 5, 6 y 7 | 1 par por N | los pares de N = 6 y 7 de las láminas son reales y están en la verdad de terreno; la réplica encuentra 9/9 y hasta 58/106 (el control, hasta 104/106) |
+| Árboles, N = 12, k = 3 | un par a distancia 16,6 | √6 = 2,449, el mínimo exacto |
+| Árboles, N = 24, k = 3 y 4 | pares a distancia ~237 y ~670 (aprox.; el de k = 4 ni siquiera tiene las mismas hojas, 11 y 12) | 15,7 (control 7,6) y 19,2; ningún par |
+
+El texto de la tesis (cap. 4, ~l. 1164) dice que la validación dio «≈0.17 vs ≈0.08»: no lo respaldan
+ni las láminas (−0,48) ni la réplica, y con árboles el máximo es 0,0804.
+
 ## Pendientes / ideas
 
 - Verificar el calculo del U0-polinomio contra casos chicos conocidos (n <= 6).
