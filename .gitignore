@@ -31,3 +31,6 @@ Thumbs.db
 *.synctex.gz
 *.out
 *.toc
+
+# Kaggle (kernels generados por kaggle/lanzar.py)
+kaggle/kernels/

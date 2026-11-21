@@ -1,0 +1,11 @@
+{
+ "n": 12,
+ "k": 4,
+ "arboles": 551,
+ "dim": 47,
+ "grupos_con_colision": 0,
+ "arboles_en_colision": 0,
+ "pares_no_isomorfos": 0,
+ "segundos": 0.1,
+ "ejemplos": []
+}
