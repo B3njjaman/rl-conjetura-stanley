@@ -73,6 +73,26 @@ tesis original. La hipotesis es que la culpa es de los cambios 3 y 8 de
      encontrar**: "no se encontraron pares" no dice nada del método ni de la conjetura.
 4. Las corridas se mandan a Kaggle (`kaggle/lanzar.py`); en el PC no se entrena (se sobrecalienta).
 
+## 2026-11-21 (tarde) — U_k incremental (cambio 18)
+
+Para el objetivo estrella ($U_5$ con n = 26–33) el $U_k$ de la versión anterior costaba unos 40 ms por árbol
+con n = 34: demasiado para 2.000 árboles por iteración. La versión nueva recorre los cortes en profundidad
+(cada corte parte una sola componente) y traduce el multiconjunto de tamaños a su índice con una suma de
+números aleatorios de 64 bits y una tabla hash, sin ordenar ni buscar. El vector es el mismo (50 tests).
+
+| n | k | combinaciones | antes (ms) | ahora, vector (ms) | ahora, hash (ms) |
+|---|---|---|---|---|---|
+| 24 | 3 | 2.048 | 0,17 | 0,04 | 0,03 |
+| 24 | 4 | 10.903 | 1,39 | 0,32 | 0,15 |
+| 29 | 3 | 3.683 | 0,52 | 0,05 | 0,04 |
+| 30 | 5 | 146.596 | 25,0 | 2,7 | 2,1 |
+| 34 | 5 | 284.274 | 41,9 | 3,6 | 2,7 |
+
+Un hilo, árboles al azar. La enumeración de la verdad de terreno usa el hash directo y da los mismos
+resultados con n = 16–19 (n = 19: de 13,7 s a 3,0 s con 2 hilos). Las corridas de Kaggle lanzadas antes
+(commits 15e5b65, 4f54e9b8 y 653bd417) usan la versión anterior: el resultado es el mismo, solo cambia el
+tiempo.
+
 ## Pendientes / ideas
 
 - Verificar el calculo del U0-polinomio contra casos chicos conocidos (n <= 6).

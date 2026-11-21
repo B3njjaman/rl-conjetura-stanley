@@ -120,3 +120,30 @@ def test_uk_completo_es_el_u_de_grafos(n):
         padres = padres_desde_arbol_nx(T)
         Tr = nx.Graph([(i, int(padres[i])) for i in range(1, n)])
         assert list(uk_arbol(padres, n - 1)) == list(u_signed_nx(Tr))
+
+
+# ---- U_k incremental (CAMBIO 18) contra la version por combinaciones ----------------------
+@pytest.mark.parametrize("n,ks", [(12, range(0, 12)), (18, (2, 3, 4, 5)), (24, (3, 4)), (30, (3, 5))])
+def test_uk_incremental_igual_a_combinaciones(n, ks):
+    from stanley_rl.upoly import uk_arbol_combinaciones
+    rng = random.Random(1000 + n)
+    for _ in range(8):
+        padres = padres_desde_arbol_nx(nx.random_labeled_tree(n, seed=rng.randrange(10 ** 9)))
+        for k in ks:
+            assert list(uk_arbol(padres, k)) == list(uk_arbol_combinaciones(padres, k)), (n, k)
+
+
+def test_uk_lote_y_hash_agrupan_igual():
+    from stanley_rl.arboles import arboles
+    from stanley_rl.upoly import uk_lote, uk_hash_lote
+    for n, k in ((12, 2), (14, 2), (16, 3)):
+        P = np.concatenate(list(arboles(n)))
+        V = uk_lote(P, k)
+        H = uk_hash_lote(P, k)
+        por_vector = {}
+        for i, v in enumerate(V):
+            por_vector.setdefault(v.tobytes(), []).append(i)
+        por_hash = {}
+        for i, h in enumerate(H):
+            por_hash.setdefault(int(h), []).append(i)
+        assert sorted(map(tuple, por_vector.values())) == sorted(map(tuple, por_hash.values())), (n, k)

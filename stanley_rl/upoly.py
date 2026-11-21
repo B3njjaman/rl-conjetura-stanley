@@ -296,19 +296,205 @@ def _uk_arbol(padres, n, k, claves, orden, dim):
     return out
 
 
-def uk_arbol(padres, k):
-    """Vector del U restringido de nivel k del arbol dado por padres (padres[i] < i)."""
+def uk_arbol_combinaciones(padres, k):
+    """Version anterior (recalcula las componentes en cada combinacion). Se deja para los tests."""
     padres = np.asarray(padres, dtype=np.int64)
     n = len(padres)
     base, claves, orden = base_arboles(n, k)
     return _uk_arbol(padres, n, k, claves, orden, len(base))
 
 
+# ----------------------------------------------------------------------------------------
+# Arboles: U_k incremental (CAMBIO 18)
+# ----------------------------------------------------------------------------------------
+# Los cortes se eligen en orden creciente de vertice hijo. Como padres[i] < i, al cortar c todavia
+# no hay cortes debajo de c: la componente nueva mide sz[c] y la componente que lo contenia (la del
+# ancestro cortado mas cercano, o la de la raiz) pierde sz[c]. Cada combinacion cuesta O(1) mas
+# subir hasta el ancestro cortado, sin recalcular ni ordenar nada.
+#
+# Para no ordenar los tamanos, a cada multiconjunto {s_1, ..., s_m} se le asocia
+#     S = r[s_1] + ... + r[s_m]  (mod 2^64),  r[s] = numeros aleatorios de 64 bits fijos,
+# que se actualiza en O(1) en cada corte. Una tabla hash lleva S al indice de la particion en la
+# base. Al construir la tabla se comprueba que S es inyectiva sobre la base, y toda combinacion da
+# una particion de la base, asi que el vector resultante es EXACTO.
+_MASK64 = (1 << 64) - 1
+
+
+@lru_cache(maxsize=None)
+def _azar_tamanos(n):
+    rng = np.random.default_rng(20261121)
+    return rng.integers(0, _MASK64, size=n + 1, dtype=np.uint64, endpoint=True)
+
+
+@njit(cache=True)
+def _sonda(S, bits):
+    return np.int64((S * np.uint64(0x9E3779B97F4A7C15)) >> np.uint64(64 - bits))
+
+
+@lru_cache(maxsize=None)
+def tabla_arboles(n, k):
+    """(base, r, claves_tabla, valores_tabla, bits) para el U_k incremental de arboles con n vertices."""
+    base = particiones(n, max_partes=min(k + 1, n))
+    r = _azar_tamanos(n)
+    sumas = []
+    for p in base:
+        s = 0
+        for x in p:
+            s = (s + int(r[x])) & _MASK64
+        sumas.append(s)
+    assert len(set(sumas)) == len(sumas), "S no es inyectiva sobre la base: cambiar la semilla"
+    bits = max(4, int(np.ceil(np.log2(4 * len(base)))))
+    claves = np.zeros(1 << bits, dtype=np.uint64)
+    valores = -np.ones(1 << bits, dtype=np.int64)
+    for i, s in enumerate(sumas):
+        j = _sonda(np.uint64(s), bits)
+        while valores[j] >= 0:
+            j = (j + 1) & ((1 << bits) - 1)
+        claves[j] = np.uint64(s)
+        valores[j] = i
+    return base, r, claves, valores, bits
+
+
+@njit(cache=True)
+def _mezcla(S):
+    z = S + np.uint64(0x9E3779B97F4A7C15)
+    z = (z ^ (z >> np.uint64(30))) * np.uint64(0xBF58476D1CE4E5B9)
+    z = (z ^ (z >> np.uint64(27))) * np.uint64(0x94D049BB133111EB)
+    return z ^ (z >> np.uint64(31))
+
+
+@njit(cache=True)
+def _preorden(padres, n):
+    """Reetiqueta el arbol en preorden (DFS desde 0): los descendientes de v quedan en
+    (v, v + sz[v]). Devuelve (padres en preorden, sz en preorden)."""
+    cnt = np.zeros(n + 1, dtype=np.int64)
+    for i in range(1, n):
+        cnt[padres[i] + 1] += 1
+    for i in range(n):
+        cnt[i + 1] += cnt[i]
+    hijos = np.empty(max(n - 1, 1), dtype=np.int64)
+    pos = cnt[:n].copy()
+    for i in range(1, n):
+        hijos[pos[padres[i]]] = i
+        pos[padres[i]] += 1
+    nuevo = np.empty(n, dtype=np.int64)
+    pila = np.empty(n, dtype=np.int64)
+    tope = 0
+    pila[0] = 0
+    tope = 1
+    t = 0
+    while tope > 0:
+        tope -= 1
+        v = pila[tope]
+        nuevo[v] = t
+        t += 1
+        for j in range(cnt[v + 1] - 1, cnt[v] - 1, -1):   # hijos en orden inverso
+            pila[tope] = hijos[j]
+            tope += 1
+    np_ = np.zeros(n, dtype=np.int64)
+    for i in range(1, n):
+        np_[nuevo[i]] = nuevo[padres[i]]
+    sz = np.ones(n, dtype=np.int64)
+    for i in range(n - 1, 0, -1):
+        sz[np_[i]] += sz[i]
+    return np_, sz
+
+
+@njit(cache=True)
+def _indice_tabla(S, claves, valores, bits):
+    mascara = (1 << bits) - 1
+    j = _sonda(S, bits)
+    while claves[j] != S:
+        if valores[j] < 0:
+            raise ValueError("particion fuera de la base")
+        j = (j + 1) & mascara
+    return valores[j]
+
+
+@njit(cache=True)
+def _uk_inc(padres, n, k, r, claves, valores, bits, dim, solo_hash):
+    """Recorre todos los conjuntos de <= k cortes. Devuelve (vector, hash).
+
+    solo_hash=True: no arma el vector (dim se ignora) y devuelve el hash de 64 bits
+    H = sum_combinaciones mezcla(S) = sum_lambda v_lambda * mezcla(S(lambda)), que depende solo
+    del vector U_k (dos arboles con el mismo U_k tienen el mismo H).
+    """
+    padres, sz = _preorden(padres, n)
+    out = np.zeros(1 if solo_hash else dim, dtype=np.int64)
+    H = np.uint64(0)
+    comp = np.zeros(k + 2, dtype=np.int64)
+    cortado = np.zeros(k + 2, dtype=np.int64)    # vertice cortado en cada nivel (crecientes)
+    ancestro = np.zeros(k + 2, dtype=np.int64)
+    inicio = np.zeros(k + 2, dtype=np.int64)
+    comp[0] = n
+    S = r[n]
+    nivel = 0
+    inicio[0] = 1
+    while True:
+        # registrar la combinacion actual
+        if solo_hash:
+            H += _mezcla(S)
+        else:
+            out[_indice_tabla(S, claves, valores, bits)] += 1
+        # ultimo nivel: todas las extensiones con un corte mas, sin tocar el estado
+        if nivel == k - 1:
+            for c in range(inicio[nivel], n):
+                ia = 0
+                for L in range(nivel, 0, -1):            # ancestro cortado mas cercano
+                    a = cortado[L]
+                    if c < a + sz[a]:
+                        ia = L
+                        break
+                A = comp[ia]
+                S2 = S - r[A] + r[A - sz[c]] + r[sz[c]]
+                if solo_hash:
+                    H += _mezcla(S2)
+                else:
+                    out[_indice_tabla(S2, claves, valores, bits)] += 1
+            inicio[nivel] = n
+        # siguiente combinacion (DFS sobre conjuntos crecientes de cortes)
+        while True:
+            if nivel < k - 1 and inicio[nivel] < n:
+                c = inicio[nivel]
+                inicio[nivel] += 1
+                ia = 0
+                for L in range(nivel, 0, -1):
+                    a = cortado[L]
+                    if c < a + sz[a]:
+                        ia = L
+                        break
+                viejo = comp[ia]
+                S = S - r[viejo] + r[viejo - sz[c]] + r[sz[c]]
+                comp[ia] = viejo - sz[c]
+                nivel += 1
+                comp[nivel] = sz[c]
+                cortado[nivel] = c
+                ancestro[nivel] = ia
+                inicio[nivel] = c + 1
+                break
+            if nivel == 0:
+                return out, H
+            c = cortado[nivel]
+            ia = ancestro[nivel]
+            viejo = comp[ia]
+            S = S - r[viejo] + r[viejo + sz[c]] - r[sz[c]]
+            comp[ia] = viejo + sz[c]
+            nivel -= 1
+
+
+def uk_arbol(padres, k):
+    """Vector del U restringido de nivel k del arbol dado por padres (padres[i] < i)."""
+    padres = np.asarray(padres, dtype=np.int64)
+    n = len(padres)
+    base, r, claves, valores, bits = tabla_arboles(n, k)
+    return _uk_inc(padres, n, k, r, claves, valores, bits, len(base), False)[0]
+
+
 @njit(cache=True, parallel=True)
-def _uk_lote(P, n, k, claves, orden, dim):
+def _uk_lote(P, n, k, r, claves, valores, bits, dim):
     out = np.zeros((P.shape[0], dim), dtype=np.int64)
     for s in prange(P.shape[0]):
-        out[s] = _uk_arbol(P[s], n, k, claves, orden, dim)
+        out[s] = _uk_inc(P[s], n, k, r, claves, valores, bits, dim, False)[0]
     return out
 
 
@@ -316,8 +502,25 @@ def uk_lote(P, k):
     """U_k de muchos arboles a la vez (filas de P = arreglos de padres), en paralelo."""
     P = np.ascontiguousarray(P, dtype=np.int64)
     n = P.shape[1]
-    base, claves, orden = base_arboles(n, k)
-    return _uk_lote(P, n, k, claves, orden, len(base))
+    base, r, claves, valores, bits = tabla_arboles(n, k)
+    return _uk_lote(P, n, k, r, claves, valores, bits, len(base))
+
+
+@njit(cache=True, parallel=True)
+def _uk_hash_lote(P, n, k, r, claves, valores, bits):
+    out = np.empty(P.shape[0], dtype=np.uint64)
+    for s in prange(P.shape[0]):
+        out[s] = _uk_inc(P[s], n, k, r, claves, valores, bits, 1, True)[1]
+    return out
+
+
+def uk_hash_lote(P, k):
+    """Hash de 64 bits del U_k de cada arbol (igual U_k => igual hash; distinto U_k => distinto hash
+    salvo con probabilidad ~2^-64). Para enumeraciones y para la memoria de colisiones."""
+    P = np.ascontiguousarray(P, dtype=np.int64)
+    n = P.shape[1]
+    base, r, claves, valores, bits = tabla_arboles(n, k)
+    return _uk_hash_lote(P, n, k, r, claves, valores, bits)
 
 
 @njit(cache=True, parallel=True)

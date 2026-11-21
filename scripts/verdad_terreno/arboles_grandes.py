@@ -3,8 +3,8 @@ isomorfos con el mismo U restringido U_k, en cascada. No usa redes neuronales.
 
     python scripts/verdad_terreno/arboles_grandes.py --n 20 21 22 23 24 --kmax 8
 
-1. Se enumeran todos los arboles (stanley_rl/arboles.py) y se calcula U_3 de cada uno; se guarda un
-   hash de 64 bits del vector.
+1. Se enumeran todos los arboles (stanley_rl/arboles.py) y se calcula directamente un hash de 64 bits
+   del vector U_3 de cada uno (upoly.uk_hash_lote, sin armar el vector).
 2. Los arboles con hash repetido se recalculan y se agrupan por el vector exacto (un hash repetido
    por azar no produce un falso positivo).
 3. Para k = 4, 5, ... se recalcula U_k solo dentro de los grupos del nivel anterior (si dos arboles
@@ -22,13 +22,12 @@ from math import comb
 from pathlib import Path
 
 import numpy as np
-from numba import njit, prange
 
 RAIZ = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RAIZ))
 from stanley_rl.arboles import arboles  # noqa: E402
 from stanley_rl.enfoque2 import canon_arbol  # noqa: E402
-from stanley_rl.upoly import uk_lote  # noqa: E402
+from stanley_rl.upoly import uk_hash_lote, uk_lote  # noqa: E402
 
 SALIDA = RAIZ / "resultados" / "verdad_terreno"
 
@@ -36,20 +35,6 @@ SALIDA = RAIZ / "resultados" / "verdad_terreno"
 def numero_de_arboles(n):
     import networkx as nx
     return nx.number_of_nonisomorphic_trees(n)
-
-
-@njit(cache=True, parallel=True)
-def hash_filas(V):
-    out = np.empty(V.shape[0], dtype=np.uint64)
-    for s in prange(V.shape[0]):
-        h = np.uint64(1469598103934665603)
-        for j in range(V.shape[1]):
-            h ^= np.uint64(V[s, j] & 0xFFFFFFFF)
-            h *= np.uint64(1099511628211)
-            h ^= np.uint64((V[s, j] >> 32) & 0xFFFFFFFF)
-            h *= np.uint64(1099511628211)
-        out[s] = h
-    return out
 
 
 def agrupar_exacto(P, idx, k):
@@ -74,7 +59,7 @@ def correr(n, kmax, bloque):
     h = np.empty(total, dtype=np.uint64)
     pos = 0
     for B in arboles(n, bloque=bloque):
-        h[pos:pos + len(B)] = hash_filas(uk_lote(B, 3))
+        h[pos:pos + len(B)] = uk_hash_lote(B, 3)
         P[pos:pos + len(B)] = B
         pos += len(B)
     assert pos == total, (pos, total)
