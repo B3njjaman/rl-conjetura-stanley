@@ -125,16 +125,16 @@ En la última columna, «excluir» significa sacar esa clase del espacio de bús
 - **Contraste con la tesis** *(inferencia mía)*. Si la tesis no encontró pares con U_3 en N = 12, eso calza con SST (el primero aparece en 16).
 - **Contraste con la verdad de terreno del repo** (agregado el 21-11). Los mínimos coinciden: U_2 en n = 10, U_3 en 16 y U_4 en 22, con exactamente un par U_4 en 22 y otro en 23. Los conteos de U_3, en cambio, no calzan del todo:
 
-  | n | SST | repo |
+  | n | SST (según este informe) | repo: grupos (árboles) |
   |---|---|---|
-  | 16 | 1 familia | 1 grupo |
-  | 17 | 2 familias | 1 grupo |
-  | 18 | 11 familias | 11 grupos |
-  | 20 | 92 familias | 96 pares |
-  | 22 | 667 familias | 695 pares |
-  | 23 | 769 familias | 856 pares |
+  | 16 | 1 familia | 1 (2) |
+  | 17 | «2» (¿familias o árboles?) | 1 (2) |
+  | 18 | 11 familias (22 árboles) | 11 (22) |
+  | 20 | 92 familias | 92 (186) |
+  | 22 | 667 familias | 667 (1.348) |
+  | 23 | 769 familias (1.554 árboles) | 824 (1.664) |
 
-  Para n ≥ 20 el repo cuenta pares y SST familias, así que es esperable que difieran. La diferencia en n = 17 tiene que explicarse. La explicación más probable es que los «3-cuts» de SST no sean acumulados (no exigen igualdad en 1 y 2 cortes), pero **está pendiente de verificar**.
+  Los n pares coinciden exactamente. Los impares no: n = 23 difiere y n = 17 depende de cómo se lea la tabla (si «2» son árboles, coincide). **Pendiente:** abrir la tabla de arXiv:1505.01889 y explicar la diferencia en n = 23. Es la única duda abierta sobre la verdad de terreno, que para n ≤ 19 además está validada con fuerza bruta y con los pares Y/Z.
 - **Cota inferior para U_5 con el repo.** La enumeración del repo revisó U_5 hasta n = 24 (`kmax_revisado` = 5 en `arboles_grandes_n22–24.json`) sin encontrar pares. Eso da Φ(5) ≥ 25 y resuelve la ambigüedad de SST.
 
 **Otras truncaciones**

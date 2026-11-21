@@ -170,8 +170,9 @@ El texto de la tesis (cap. 4, ~l. 1164) dice que la validación dio «≈0.17 vs
 ni las láminas (−0,48) ni la réplica, y con árboles el máximo es 0,0804.
 
 **Segunda opinión (Opus; Codex sin cuota hasta el 25-11).** Lo que se verificó en los datos:
-- H3 corrió en el modo de la tesis (Adam 1e-2, selección sin tope). El Enfoque 2 nunca corrió con el ajuste
-  estilo Wagner, que es el que sí reproduce a Wagner en H1.
+- Todo lo de Stanley corrió en el modo de la tesis (Adam, selección sin tope; valores por defecto de
+  `Config`), y eso incluye el Enfoque 1, H3 y N = 24. El ajuste estilo Wagner, que es el que sí reproduce a
+  Wagner en H1, nunca se probó en Stanley.
 - El que aprende colapsa: 27 de 30 corridas terminan con `n_elite` ≥ 1.000, y la mediana de la última
   mejora es la iteración 99.
 - La menor distancia no nula entre vectores U_k es √2, porque cada nivel suma C(n−1, j). El control toca ese
