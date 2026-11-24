@@ -1,0 +1,278 @@
+{
+ "16": [
+  {
+   "semilla": 101,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 3948,
+   "arboles_hasta_todos": 3948,
+   "arboles_usados": 250000,
+   "segundos": 1.5
+  },
+  {
+   "semilla": 102,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 8708,
+   "arboles_hasta_todos": 8708,
+   "arboles_usados": 250000,
+   "segundos": 1.3
+  },
+  {
+   "semilla": 103,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 3662,
+   "arboles_hasta_todos": 3662,
+   "arboles_usados": 250000,
+   "segundos": 1.3
+  },
+  {
+   "semilla": 104,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 11989,
+   "arboles_hasta_todos": 11989,
+   "arboles_usados": 250000,
+   "segundos": 1.2
+  },
+  {
+   "semilla": 105,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 24633,
+   "arboles_hasta_todos": 24633,
+   "arboles_usados": 250000,
+   "segundos": 1.4
+  },
+  {
+   "semilla": 106,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 8680,
+   "arboles_hasta_todos": 8680,
+   "arboles_usados": 250000,
+   "segundos": 1.3
+  },
+  {
+   "semilla": 107,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 5577,
+   "arboles_hasta_todos": 5577,
+   "arboles_usados": 250000,
+   "segundos": 1.2
+  },
+  {
+   "semilla": 108,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 8943,
+   "arboles_hasta_todos": 8943,
+   "arboles_usados": 250000,
+   "segundos": 1.2
+  },
+  {
+   "semilla": 109,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 75058,
+   "arboles_hasta_todos": 75058,
+   "arboles_usados": 250000,
+   "segundos": 1.2
+  },
+  {
+   "semilla": 110,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 2681,
+   "arboles_hasta_todos": 2681,
+   "arboles_usados": 250000,
+   "segundos": 1.3
+  }
+ ],
+ "17": [
+  {
+   "semilla": 101,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 323715,
+   "arboles_hasta_todos": 323715,
+   "arboles_usados": 500000,
+   "segundos": 2.7
+  },
+  {
+   "semilla": 102,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 75228,
+   "arboles_hasta_todos": 75228,
+   "arboles_usados": 250000,
+   "segundos": 1.3
+  },
+  {
+   "semilla": 103,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 392240,
+   "arboles_hasta_todos": 392240,
+   "arboles_usados": 500000,
+   "segundos": 2.8
+  },
+  {
+   "semilla": 104,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 57851,
+   "arboles_hasta_todos": 57851,
+   "arboles_usados": 250000,
+   "segundos": 3.1
+  },
+  {
+   "semilla": 105,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 144037,
+   "arboles_hasta_todos": 144037,
+   "arboles_usados": 250000,
+   "segundos": 2.0
+  },
+  {
+   "semilla": 106,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 122992,
+   "arboles_hasta_todos": 122992,
+   "arboles_usados": 250000,
+   "segundos": 1.4
+  },
+  {
+   "semilla": 107,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 42417,
+   "arboles_hasta_todos": 42417,
+   "arboles_usados": 250000,
+   "segundos": 1.8
+  },
+  {
+   "semilla": 108,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 69518,
+   "arboles_hasta_todos": 69518,
+   "arboles_usados": 250000,
+   "segundos": 3.0
+  },
+  {
+   "semilla": 109,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 167684,
+   "arboles_hasta_todos": 167684,
+   "arboles_usados": 250000,
+   "segundos": 1.7
+  },
+  {
+   "semilla": 110,
+   "pares_encontrados": 1,
+   "de": 1,
+   "arboles_hasta_primer_par": 118255,
+   "arboles_hasta_todos": 118255,
+   "arboles_usados": 250000,
+   "segundos": 1.4
+  }
+ ],
+ "18": [
+  {
+   "semilla": 101,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 9925,
+   "arboles_hasta_todos": 403462,
+   "arboles_usados": 500000,
+   "segundos": 3.4
+  },
+  {
+   "semilla": 102,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 13375,
+   "arboles_hasta_todos": 102249,
+   "arboles_usados": 250000,
+   "segundos": 2.7
+  },
+  {
+   "semilla": 103,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 13651,
+   "arboles_hasta_todos": 643268,
+   "arboles_usados": 750000,
+   "segundos": 5.9
+  },
+  {
+   "semilla": 104,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 8722,
+   "arboles_hasta_todos": 2116812,
+   "arboles_usados": 2250000,
+   "segundos": 21.0
+  },
+  {
+   "semilla": 105,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 12951,
+   "arboles_hasta_todos": 363932,
+   "arboles_usados": 500000,
+   "segundos": 4.3
+  },
+  {
+   "semilla": 106,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 10361,
+   "arboles_hasta_todos": 300599,
+   "arboles_usados": 500000,
+   "segundos": 3.2
+  },
+  {
+   "semilla": 107,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 13593,
+   "arboles_hasta_todos": 1263876,
+   "arboles_usados": 1500000,
+   "segundos": 10.0
+  },
+  {
+   "semilla": 108,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 23884,
+   "arboles_hasta_todos": 296742,
+   "arboles_usados": 500000,
+   "segundos": 3.0
+  },
+  {
+   "semilla": 109,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 6705,
+   "arboles_hasta_todos": 3478942,
+   "arboles_usados": 3500000,
+   "segundos": 25.2
+  },
+  {
+   "semilla": 110,
+   "pares_encontrados": 11,
+   "de": 11,
+   "arboles_hasta_primer_par": 2681,
+   "arboles_hasta_todos": 624226,
+   "arboles_usados": 750000,
+   "segundos": 5.5
+  }
+ ]
+}

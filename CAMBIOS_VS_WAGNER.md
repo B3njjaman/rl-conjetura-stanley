@@ -35,10 +35,15 @@ notebooks del repo (validación, Enfoque 1 y Enfoque 2).
 | 11 | Reconstrucción del grafo (nb 02) | rearma un grafo | **parte la palabra en 2** y rearma cada mitad como grafo, sin tocar el resto del algoritmo | Leer el par reusando el mismo recorrido triangular |
 | 12 | Recompensa (nb 02) | $\sqrt{n-1}+1-\lambda_1-\mu$ sobre un grafo | función del **par** (provisional: conexos + pocas aristas; luego comparar $U_0$ de Stanley) | El objetivo ahora vive sobre dos grafos |
 | 13 | Selección élite/súper (nb 01 y 02) | `select_elites` / `select_super_sessions`: umbral por percentil **y tope** de `n_sessions·(100−pct)/100` sesiones entre las que empatan en el umbral (las estrictamente por encima entran siempre) | máscara `REC >= np.percentile(REC, pct)` sin tope | **Diferencia no intencional** (detectada el 2026-09-05 al revisar el nb 01). Si muchas sesiones empatan en el umbral —los desconexos valen todos −1000, o la política ya colapsó y repite el mismo grafo— la élite y las súper se inflan: en una corrida la élite fue 1064 sesiones (todas). Las corridas `wagner_fit` de `scripts/01_wagner_conj21/` usan la selección con tope de Wagner |
+| 14 | Cálculo del $U$-polinomio (Enfoques 1 y 2) | — (en la tesis: recorre los $2^{|E|}$ subconjuntos de aristas con networkx) | `stanley_rl/upoly.py`: grafos por programación dinámica sobre subconjuntos de vértices ($O(3^n)$, Numba, en paralelo); árboles recorriendo solo las combinaciones de $\le k$ aristas con tamaños de subárbol | Entre 90× y 1.900× más rápido para $N = 5$–$7$; el vector es **idéntico** al del código original (`tests/test_upoly.py`) |
+| 15 | Chequeo de isomorfismo (Enfoque 1) | — (en la tesis: `nx.is_isomorphic` en cada par) | solo cuando $v(G_1) = v(G_2)$, con forma canónica exacta (mínimo sobre las $N!$ permutaciones) | Si los vectores difieren los grafos no pueden ser isomorfos ($U$ es invariante): la recompensa no cambia (`tests/test_enfoques.py`) |
+| 16 | Generación y estados (Enfoques 1 y 2) | — (en la tesis: `for` por sesión) | las 1000 sesiones avanzan juntas; los estados de entrenamiento se reconstruyen desde las acciones; el $U$ se calcula una vez por grafo distinto del lote | Rapidez y memoria |
+| 17 | Red del Enfoque 2 (árboles) | — (código original no encontrado) | la red 128-64-4 con una salida de $n$ logits; los padres inválidos ($j \ge i$) se enmascaran; estado = padres en one-hot + posición en one-hot | **Reconstrucción** desde el texto de la tesis (cap. 3), con los hiperparámetros de su tabla |
+| 18 | $U_k$ de árboles (Enfoque 2 y verdad de terreno) | — (en la tesis: recorre los subconjuntos de aristas con networkx) | `upoly._uk_inc`: los cortes se recorren en profundidad sobre el árbol reetiquetado en preorden, así que cada corte nuevo solo parte una componente (actualización $O(1)$); el multiconjunto de tamaños se lleva como una suma de números aleatorios de 64 bits que una tabla hash traduce al índice exacto de la partición (se comprueba que no hay choques en la base); `uk_hash_lote` da un hash de 64 bits que es función del vector $U_k$ | El vector es **idéntico** al anterior y a la fuerza bruta (tests); con un hilo, de 4 a 12 veces más rápido para el vector y de 7 a 16 para el hash (n = 34, k = 5: de 42–61 ms a 3,6 ms por el vector o 2,7 ms por el hash). Se valida además con los pares $Y_{k,l}$, $Z_{k,l}$ del Teorema 12 de Aliste-Prieto, de Mier y Zamora, hasta n = 34 con $U_5$ (`tests/test_aliste_yz.py`). Hace viable buscar con $U_5$ en n = 26–33 |
 
 > Las filas **1–9** corresponden al notebook 01 (validación con Wagner, un solo
-> grafo). De la **10** en adelante son del notebook 02 (par de grafos) y los que
-> sigan, con numeración continua.
+> grafo). De la **10** a la **12** son del notebook 02 (par de grafos). De la **14** en
+> adelante son del paquete `stanley_rl/` (réplica acelerada de los Enfoques 1 y 2).
 
 ## Lo que NO cambia (a propósito)
 
@@ -64,3 +69,11 @@ baja más lento pero mantiene exploración. La variante `wagner_fit` de
 Es el más relevante para la tesis: el score "0.17 superior a Wagner" que se reportó
 originalmente venía de un matching con bug que subestimaba μ. Con el blossom
 corregido (validado contra NetworkX en cada corrida) la comparación es honesta.
+
+## Nota sobre la selección con tope (revisión del 2026-11-21)
+
+Wagner descuenta el cupo distinto en sus dos funciones: `select_elites` lo descuenta por cada
+sesión con recompensa $\ge$ umbral (entre o no), y `select_super_sessions` solo por las que
+entran. La variante `wagner_fit` usaba la regla de las élites para ambas; desde esta fecha usa
+cada una como Wagner. El código original del Enfoque 1 usa élite sin tope y súper con el tope de
+`select_super_sessions`, y así lo replica `stanley_rl` (`seleccion="tesis"`).

@@ -1,0 +1,3 @@
+[N5_s0] config {'N': 5, 'seed': 0, 'iters': 15, 'tiempo_max': 600.0, 'n_ses': 1000, 'pct_elite': 93, 'pct_super': 94, 'optim': 'adam', 'lr': 0.001, 'weight_decay': 0.0001, 'clip': None, 'minilote': None, 'seleccion': 'tesis', 'norma': 'mse', 'capas': (128, 64, 4), 'parar_al_completar': False, 'total_pares': 1, 'extra': {}}
+[N5_s0] iter 0 | mejor +1.0000 | top100 +0.4568 | loss +0.6939 | n_elite 91 | n_super 78 | super_distintos 78 | sesiones_r1 1 | pares_distintos 1 | segundos +23.7000
+[N5_s0] FIN {"enfoque": 1, "N": 5, "seed": 0, "iters_corridas": 15, "pares_distintos": 1, "total_pares_que_existen": 1, "iter_primer_par": 0, "mejor_final": 1.0, "segundos": 24.4}

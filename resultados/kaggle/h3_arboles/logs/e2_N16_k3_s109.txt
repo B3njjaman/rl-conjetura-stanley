@@ -1,0 +1,6 @@
+[N16_k3_s109] config {'N': 16, 'k': 3, 'seed': 109, 'iters': 3000, 'tiempo_max': 4500.0, 'n_ses': 1000, 'pct_elite': 93, 'pct_super': 94, 'optim': 'adam', 'lr': 0.01, 'weight_decay': 0.0001, 'clip': 1.0, 'minilote': None, 'seleccion': 'tesis', 'norma': 'l2', 'capas': (128, 64, 4), 'parar_al_completar': True, 'total_pares': 1, 'extra': {}}
+[N16_k3_s109] iter 0 | mejor +0.0544 | top100 +0.0248 | loss +1.8584 | n_elite 70 | n_super 60 | super_distintos 60 | iso 0 | mejor_dist_no_iso +17.3781 | pares_distintos 0 | segundos 2.5
+[N16_k3_s109] iter 25 | mejor +0.1310 | top100 +0.0489 | loss +1.5291 | n_elite 75 | n_super 64 | super_distintos 64 | iso 1 | mejor_dist_no_iso +6.6332 | pares_distintos 0 | segundos 10.4
+[N16_k3_s109] iter 50 | mejor +0.1310 | top100 +0.0565 | loss +1.0218 | n_elite 75 | n_super 64 | super_distintos 64 | iso 0 | mejor_dist_no_iso +6.6332 | pares_distintos 0 | segundos 18.4
+[N16_k3_s109] encontrados los 1 pares (iter 66)
+[N16_k3_s109] FIN {"enfoque": 2, "N": 16, "k": 3, "seed": 109, "iters_corridas": 67, "pares_distintos": 1, "total_pares_que_existen": 1, "mejor_dist_no_iso": 0.0, "segundos": 24.0}

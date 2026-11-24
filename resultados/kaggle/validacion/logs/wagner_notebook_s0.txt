@@ -1,0 +1,12 @@
+device: cpu
+[notebook_seed0] modo=notebook seed=0 iters=3000 tiempo_max=11880.0 hilos=1 device=cpu
+[notebook_seed0] iter    0 | mejor -11.0846 | top100 -11.9244 | loss 0.6861 | elite 70 super 60 (distintos 60)
+[notebook_seed0] iter   50 | mejor -2.7012 | top100 -4.2562 | loss 0.2970 | elite 75 super 64 (distintos 64)
+[notebook_seed0] iter  100 | mejor -1.1067 | top100 -31.7952 | loss 0.1537 | elite 75 super 64 (distintos 64)
+[notebook_seed0] iter  150 | mejor -1.1067 | top100 -1.3930 | loss 0.0859 | elite 75 super 66 (distintos 66)
+[notebook_seed0] iter  200 | mejor -0.4803 | top100 -0.6629 | loss 0.0730 | elite 75 super 68 (distintos 64)
+[notebook_seed0] iter  250 | mejor -0.4803 | top100 -0.4921 | loss 0.0589 | elite 76 super 76 (distintos 46)
+[notebook_seed0] iter  300 | mejor -0.4803 | top100 -0.4803 | loss 0.0501 | elite 493 super 493 (distintos 113)
+[notebook_seed0] iter  350 | mejor -0.4803 | top100 -0.4803 | loss 0.0271 | elite 4786 super 4786 (distintos 170)
+[notebook_seed0] iter  400 | mejor -0.4803 | top100 -0.4803 | loss 0.0203 | elite 13815 super 13815 (distintos 210)
+Killed

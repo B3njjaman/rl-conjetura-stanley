@@ -1,0 +1,31 @@
+{
+ "commit": "3c09e615d3827fe2aeafc5f9cb9cfffadb1026cf",
+ "estado": {
+  "wagner_wagner_fit_s0": {
+   "codigo": 0,
+   "segundos": 30
+  },
+  "e1_N5_s0": {
+   "codigo": 0,
+   "segundos": 30
+  },
+  "e1_N7_s0": {
+   "codigo": 0,
+   "segundos": 30
+  },
+  "wagner_notebook_s0": {
+   "codigo": 0,
+   "segundos": 40
+  },
+  "e2_N12_k3_s0": {
+   "codigo": 0,
+   "segundos": 20
+  },
+  "e2_N24_k4_s0": {
+   "codigo": 0,
+   "segundos": 20
+  }
+ },
+ "pendientes": [],
+ "activos": []
+}

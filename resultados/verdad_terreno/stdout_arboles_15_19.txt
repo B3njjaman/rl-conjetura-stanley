@@ -1,0 +1,10 @@
+arboles n=15 k=3: 7741 arboles | grupos con colision 0 | pares no isomorfos 0 | 1.9s
+arboles n=15 k=4: 7741 arboles | grupos con colision 0 | pares no isomorfos 0 | 1.3s
+arboles n=16 k=3: 19320 arboles | grupos con colision 1 | pares no isomorfos 1 | 2.6s
+arboles n=16 k=4: 19320 arboles | grupos con colision 0 | pares no isomorfos 0 | 5.4s
+arboles n=17 k=3: 48629 arboles | grupos con colision 1 | pares no isomorfos 1 | 8.6s
+arboles n=17 k=4: 48629 arboles | grupos con colision 0 | pares no isomorfos 0 | 14.5s
+arboles n=18 k=3: 123867 arboles | grupos con colision 11 | pares no isomorfos 11 | 25.7s
+arboles n=18 k=4: 123867 arboles | grupos con colision 0 | pares no isomorfos 0 | 48.0s
+arboles n=19 k=3: 317955 arboles | grupos con colision 12 | pares no isomorfos 12 | 54.7s
+arboles n=19 k=4: 317955 arboles | grupos con colision 0 | pares no isomorfos 0 | 136.4s

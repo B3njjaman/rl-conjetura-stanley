@@ -1,0 +1,23 @@
+[{"stream_name":"stdout","time":12.71505491,"data":"commit 15e5b656ce9fc3e87c0797b856161794332ad3bc | cpus 4 | numpy 2.1.3 | numba 0.61.2 | torch 2.11.0+cpu | networkx 3.7\n"}
+,{"stream_name":"stdout","time":12.715849446,"data":"[      0s] inicia e2_N24_k4_s0: python -m stanley_rl.correr e2 --N 24 --k 4 --seed 0 --iters 20000 --tiempo-max 37440.0 --salida resultados/03_enfoque2/N24_k4_s0\n"}
+,{"stream_name":"stdout","time":12.716432541,"data":"[      0s] inicia e2_N24_k4_s1: python -m stanley_rl.correr e2 --N 24 --k 4 --seed 1 --iters 20000 --tiempo-max 37440.0 --salida resultados/03_enfoque2/N24_k4_s1\n"}
+,{"stream_name":"stdout","time":12.717011077,"data":"[      0s] inicia e2_N24_k3_s0: python -m stanley_rl.correr e2 --N 24 --k 3 --seed 0 --iters 20000 --tiempo-max 37440.0 --salida resultados/03_enfoque2/N24_k3_s0\n"}
+,{"stream_name":"stdout","time":12.7179988,"data":"[      0s] inicia e2_N12_k3_s0: python -m stanley_rl.correr e2 --N 12 --k 3 --seed 0 --iters 2000 --tiempo-max 9000.0 --salida resultados/03_enfoque2/N12_k3_s0\n"}
+,{"stream_name":"stdout","time":952.814412298,"data":"[    940s] termina e2_N12_k3_s0 codigo 0\n"}
+,{"stream_name":"stdout","time":952.816834792,"data":"[    940s] inicia e2_N12_k3_s1: python -m stanley_rl.correr e2 --N 12 --k 3 --seed 1 --iters 2000 --tiempo-max 9000.0 --salida resultados/03_enfoque2/N12_k3_s1\n"}
+,{"stream_name":"stdout","time":1822.905910183,"data":"[   1810s] termina e2_N12_k3_s1 codigo 0\n"}
+,{"stream_name":"stdout","time":1822.908684326,"data":"[   1810s] inicia e2_N12_k3_s2: python -m stanley_rl.correr e2 --N 12 --k 3 --seed 2 --iters 2000 --tiempo-max 9000.0 --salida resultados/03_enfoque2/N12_k3_s2\n"}
+,{"stream_name":"stdout","time":2663.002358145,"data":"[   2650s] termina e2_N12_k3_s2 codigo 0\n"}
+,{"stream_name":"stdout","time":2663.003902791,"data":"[   2650s] inicia e2_N24_k3_s1_control: python -m stanley_rl.correr e2 --N 24 --k 3 --seed 1 --iters 20000 --tiempo-max 14400 --salida resultados/03_enfoque2/N24_k3_s1_control --set lr=0\n"}
+,{"stream_name":"stdout","time":17074.618645542,"data":"[  17062s] termina e2_N24_k3_s1_control codigo 0\n"}
+,{"stream_name":"stdout","time":37476.548945496,"data":"[  37464s] termina e2_N24_k4_s0 codigo 0\n"}
+,{"stream_name":"stdout","time":37476.549099654,"data":"[  37464s] termina e2_N24_k4_s1 codigo 0\n"}
+,{"stream_name":"stdout","time":37476.549111496,"data":"[  37464s] termina e2_N24_k3_s0 codigo 0\n"}
+,{"stream_name":"stdout","time":37476.549811981,"data":"LISTO {\"e2_N12_k3_s0\": {\"codigo\": 0, \"segundos\": 940}, \"e2_N12_k3_s1\": {\"codigo\": 0, \"segundos\": 870}, \"e2_N12_k3_s2\": {\"codigo\": 0, \"segundos\": 840}, \"e2_N24_k3_s1_control\": {\"codigo\": 0, \"segundos\": 14412}, \"e2_N24_k4_s0\": {\"codigo\": 0, \"segundos\": 37464}, \"e2_N24_k4_s1\": {\"codigo\": 0, \"segundos\": 37464}, \"e2_N24_k3_s0\": {\"codigo\": 0, \"segundos\": 37464}}\n"}
+,{"stream_name":"stderr","time":37481.017358628,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":37481.017402155,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":37481.709306796,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":37481.709348678,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":37483.202441554,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":37484.973981426,"data":"[NbConvertApp] Writing 288711 bytes to __results__.html\n"}
+]

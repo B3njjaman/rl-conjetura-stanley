@@ -1,0 +1,7 @@
+config {'N': 12, 'k': 3, 'seed': 0, 'iters': 5, 'tiempo_max': 600.0, 'n_ses': 1000, 'pct_elite': 93, 'pct_super': 94, 'optim': 'adam', 'lr': 0.01, 'weight_decay': 0.0001, 'clip': 1.0, 'minilote': None, 'seleccion': 'tesis', 'norma': 'l2', 'capas': (128, 64, 4), 'parar_al_completar': False, 'total_pares': None, 'extra': {}}
+iter 0 | mejor +0.2109 | top100 +0.0639 | loss +1.5920 | n_elite 71 | n_super 62 | super_distintos 62 | iso 2 | mejor_dist_no_iso +3.7417 | pares_distintos 0 | segundos +6.9000
+iter 1 | mejor +0.2109 | top100 +0.0742 | loss +1.5898 | n_elite 75 | n_super 64 | super_distintos 64 | iso 3 | mejor_dist_no_iso +3.7417 | pares_distintos 0 | segundos +7.0000
+iter 2 | mejor +0.2109 | top100 +0.0785 | loss +1.5893 | n_elite 76 | n_super 64 | super_distintos 64 | iso 5 | mejor_dist_no_iso +3.7417 | pares_distintos 0 | segundos +7.2000
+iter 3 | mejor +0.2109 | top100 +0.0846 | loss +1.5835 | n_elite 75 | n_super 64 | super_distintos 64 | iso 4 | mejor_dist_no_iso +3.7417 | pares_distintos 0 | segundos +7.3000
+iter 4 | mejor +0.2109 | top100 +0.0889 | loss +1.5801 | n_elite 75 | n_super 61 | super_distintos 61 | iso 2 | mejor_dist_no_iso +3.7417 | pares_distintos 0 | segundos +7.4000
+FIN {"enfoque": 2, "N": 12, "k": 3, "seed": 0, "iters_corridas": 5, "pares_distintos": 0, "total_pares_que_existen": null, "mejor_dist_no_iso": 3.7416573867739413, "segundos": 7.4}

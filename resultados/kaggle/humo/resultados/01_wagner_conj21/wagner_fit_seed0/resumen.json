@@ -1,0 +1,22 @@
+{
+ "nombre": "wagner_fit_seed0",
+ "modo": "wagner_fit",
+ "seed": 0,
+ "iters_pedidas": 3,
+ "iters_corridas": 3,
+ "tiempo_max": 600.0,
+ "segundos": 23,
+ "mejor_score": -10.610049661840876,
+ "contraejemplo_encontrado": false,
+ "mejor_iter": 2,
+ "lambda1": 6.852690348960159,
+ "mu": 9,
+ "arbol": false,
+ "grados_mayores": [
+  8,
+  8,
+  8,
+  8,
+  8
+ ]
+}

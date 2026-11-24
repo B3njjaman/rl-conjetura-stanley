@@ -1,0 +1,25 @@
+{
+ "n": 19,
+ "arboles": 317955,
+ "kmax_revisado": 4,
+ "niveles": {
+  "3": {
+   "grupos": 12,
+   "arboles": 24,
+   "pares": 12,
+   "mayor_grupo": 2
+  },
+  "4": {
+   "grupos": 0,
+   "arboles": 0,
+   "pares": 0,
+   "mayor_grupo": 0
+  }
+ },
+ "pares_por_mayor_k": {
+  "3": 12
+ },
+ "segundos_enumeracion_u3": 2.9,
+ "segundos": 3.0,
+ "ejemplos": {}
+}

@@ -1,0 +1,22 @@
+{
+ "nombre": "notebook_seed0",
+ "modo": "notebook",
+ "seed": 0,
+ "iters_pedidas": 4,
+ "iters_corridas": 4,
+ "tiempo_max": 600.0,
+ "segundos": 25,
+ "mejor_score": -4.358148845952204,
+ "contraejemplo_encontrado": false,
+ "mejor_iter": 3,
+ "lambda1": 3.600789533071489,
+ "mu": 6,
+ "arbol": false,
+ "grados_mayores": [
+  9,
+  5,
+  4,
+  4,
+  3
+ ]
+}

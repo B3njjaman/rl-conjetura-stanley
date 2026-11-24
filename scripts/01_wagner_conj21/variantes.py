@@ -9,9 +9,11 @@ import time
 from nb01_core import *
 
 
-def seleccionar_wagner(REC, pct, n_ses):
+def seleccionar_wagner(REC, pct, n_ses, tipo="elite"):
     # umbral = percentil; las sesiones estrictamente por encima entran siempre, las que
-    # empatan justo en el umbral entran hasta completar el cupo (asi lo hace select_elites)
+    # empatan justo en el umbral entran hasta completar el cupo. Wagner descuenta el cupo
+    # distinto en sus dos funciones: select_elites por cada sesion >= umbral (entre o no),
+    # select_super_sessions solo por las que entran.
     thr = np.percentile(REC, pct)
     cupo = n_ses * (100.0 - pct) / 100.0
     mask = np.zeros(len(REC), dtype=bool)
@@ -19,12 +21,16 @@ def seleccionar_wagner(REC, pct, n_ses):
         if REC[i] >= thr - 1e-7:
             if cupo > 0 or REC[i] >= thr + 1e-7:
                 mask[i] = True
-            cupo -= 1
+                if tipo == "super":
+                    cupo -= 1
+            if tipo == "elite":
+                cupo -= 1
     return mask
 
 
 def entrenar_variante(iteraciones, modo="notebook", n_ses=n_sessions, carpeta="datos",
-                      tiempo_max=None, log=print, guardar_cada=20):
+                      tiempo_max=None, log=print, guardar_cada=20, pkl_cada=None):
+    pkl_cada = pkl_cada or guardar_cada
     os.makedirs(carpeta, exist_ok=True)
     t0 = time.time()
     modelo = ModeloGrafo(observation_space).to(device)
@@ -57,7 +63,7 @@ def entrenar_variante(iteraciones, modo="notebook", n_ses=n_sessions, carpeta="d
             m_super = REC >= np.percentile(REC, PCT_SUPER)
         else:
             m_elite = seleccionar_wagner(REC, PCT_ELITE, n_ses)
-            m_super = seleccionar_wagner(REC, PCT_SUPER, n_ses)
+            m_super = seleccionar_wagner(REC, PCT_SUPER, n_ses, "super")
 
         X = EST[m_elite].transpose(0, 2, 1).reshape(-1, observation_space)
         y = ACC[m_elite].reshape(-1).astype(np.float32)
@@ -93,6 +99,7 @@ def entrenar_variante(iteraciones, modo="notebook", n_ses=n_sessions, carpeta="d
 
         if it % guardar_cada == 0 or REC[k] > 0:
             linea_tiempo.append(dict(iter=it, score=float(REC[k]), palabra=ACC[k].astype(int).tolist()))
+        if it % pkl_cada == 0 or REC[k] > 0:
             with open(os.path.join(carpeta, f"super_iter_{it}.pkl"), "wb") as f:
                 pickle.dump({"acciones": sup_acc, "recompensas": sup_rec}, f)
             torch.save(modelo.state_dict(), os.path.join(carpeta, "modelo.pt"))

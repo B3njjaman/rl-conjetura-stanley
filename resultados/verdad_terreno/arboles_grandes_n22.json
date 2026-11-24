@@ -1,0 +1,85 @@
+{
+ "n": 22,
+ "arboles": 5623756,
+ "kmax_revisado": 5,
+ "niveles": {
+  "3": {
+   "grupos": 667,
+   "arboles": 1348,
+   "pares": 695,
+   "mayor_grupo": 3
+  },
+  "4": {
+   "grupos": 1,
+   "arboles": 2,
+   "pares": 1,
+   "mayor_grupo": 2
+  },
+  "5": {
+   "grupos": 0,
+   "arboles": 0,
+   "pares": 0,
+   "mayor_grupo": 0
+  }
+ },
+ "pares_por_mayor_k": {
+  "3": 694,
+  "4": 1
+ },
+ "segundos_enumeracion_u3": 277.0,
+ "segundos": 279.0,
+ "ejemplos": {
+  "4": [
+   [
+    [
+     0,
+     0,
+     1,
+     2,
+     3,
+     1,
+     5,
+     5,
+     1,
+     8,
+     1,
+     1,
+     0,
+     12,
+     13,
+     0,
+     15,
+     15,
+     0,
+     18,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1,
+     2,
+     2,
+     1,
+     5,
+     5,
+     1,
+     8,
+     1,
+     10,
+     0,
+     12,
+     13,
+     0,
+     15,
+     16,
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  ]
+ }
+}

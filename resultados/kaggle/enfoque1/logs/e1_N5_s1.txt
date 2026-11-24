@@ -1,0 +1,14 @@
+[N5_s1] config {'N': 5, 'seed': 1, 'iters': 300, 'tiempo_max': 3600.0, 'n_ses': 1000, 'pct_elite': 93, 'pct_super': 94, 'optim': 'adam', 'lr': 0.001, 'weight_decay': 0.0001, 'clip': None, 'minilote': None, 'seleccion': 'tesis', 'norma': 'mse', 'capas': (128, 64, 4), 'parar_al_completar': False, 'total_pares': 1, 'extra': {}}
+[N5_s1] iter 0 | mejor +0.6364 | top100 +0.4314 | loss +0.6932 | n_elite 75 | n_super 66 | super_distintos 66 | sesiones_r1 0 | pares_distintos 0 | segundos 25.7
+[N5_s1] iter 25 | mejor +1.0000 | top100 +0.7469 | loss +0.6883 | n_elite 94 | n_super 66 | super_distintos 66 | sesiones_r1 0 | pares_distintos 1 | segundos 26.9
+[N5_s1] iter 50 | mejor +1.0000 | top100 +0.8691 | loss +0.6684 | n_elite 153 | n_super 103 | super_distintos 101 | sesiones_r1 2 | pares_distintos 1 | segundos 28.3
+[N5_s1] iter 75 | mejor +1.0000 | top100 +0.8909 | loss +0.6504 | n_elite 195 | n_super 60 | super_distintos 60 | sesiones_r1 3 | pares_distintos 1 | segundos 29.7
+[N5_s1] iter 100 | mejor +1.0000 | top100 +0.9018 | loss +0.6252 | n_elite 212 | n_super 60 | super_distintos 59 | sesiones_r1 11 | pares_distintos 1 | segundos 31.3
+[N5_s1] iter 125 | mejor +1.0000 | top100 +0.8909 | loss +0.5968 | n_elite 173 | n_super 60 | super_distintos 57 | sesiones_r1 10 | pares_distintos 1 | segundos 32.8
+[N5_s1] iter 150 | mejor +1.0000 | top100 +0.9055 | loss +0.5874 | n_elite 185 | n_super 60 | super_distintos 57 | sesiones_r1 14 | pares_distintos 1 | segundos 34.5
+[N5_s1] iter 175 | mejor +1.0000 | top100 +0.9091 | loss +0.5578 | n_elite 75 | n_super 60 | super_distintos 59 | sesiones_r1 15 | pares_distintos 1 | segundos 36.0
+[N5_s1] iter 200 | mejor +1.0000 | top100 +0.9345 | loss +0.5141 | n_elite 82 | n_super 60 | super_distintos 51 | sesiones_r1 22 | pares_distintos 1 | segundos 37.3
+[N5_s1] iter 225 | mejor +1.0000 | top100 +0.9273 | loss +0.5135 | n_elite 80 | n_super 60 | super_distintos 56 | sesiones_r1 20 | pares_distintos 1 | segundos 38.6
+[N5_s1] iter 250 | mejor +1.0000 | top100 +0.9818 | loss +0.5004 | n_elite 95 | n_super 60 | super_distintos 55 | sesiones_r1 35 | pares_distintos 1 | segundos 39.8
+[N5_s1] iter 275 | mejor +1.0000 | top100 +1.0000 | loss +0.4805 | n_elite 105 | n_super 60 | super_distintos 51 | sesiones_r1 45 | pares_distintos 1 | segundos 41.0
+[N5_s1] FIN {"enfoque": 1, "N": 5, "seed": 1, "iters_corridas": 300, "pares_distintos": 1, "total_pares_que_existen": 1, "iter_primer_par": 2, "mejor_final": 1.0, "segundos": 42.3}

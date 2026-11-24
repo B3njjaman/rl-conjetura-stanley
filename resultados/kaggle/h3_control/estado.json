@@ -1,0 +1,127 @@
+{
+ "commit": "13176eb23317a8f0f1c65859d43c0b7e1065da3a",
+ "estado": {
+  "e2_N16_k3_s101_control": {
+   "codigo": 0,
+   "segundos": 820
+  },
+  "e2_N16_k3_s102_control": {
+   "codigo": 0,
+   "segundos": 840
+  },
+  "e2_N16_k3_s104_control": {
+   "codigo": 0,
+   "segundos": 840
+  },
+  "e2_N16_k3_s103_control": {
+   "codigo": 0,
+   "segundos": 850
+  },
+  "e2_N16_k3_s105_control": {
+   "codigo": 0,
+   "segundos": 810
+  },
+  "e2_N16_k3_s106_control": {
+   "codigo": 0,
+   "segundos": 810
+  },
+  "e2_N16_k3_s107_control": {
+   "codigo": 0,
+   "segundos": 810
+  },
+  "e2_N16_k3_s108_control": {
+   "codigo": 0,
+   "segundos": 810
+  },
+  "e2_N16_k3_s109_control": {
+   "codigo": 0,
+   "segundos": 820
+  },
+  "e2_N16_k3_s110_control": {
+   "codigo": 0,
+   "segundos": 800
+  },
+  "e2_N17_k3_s101_control": {
+   "codigo": 0,
+   "segundos": 930
+  },
+  "e2_N17_k3_s102_control": {
+   "codigo": 0,
+   "segundos": 930
+  },
+  "e2_N17_k3_s104_control": {
+   "codigo": 0,
+   "segundos": 930
+  },
+  "e2_N17_k3_s103_control": {
+   "codigo": 0,
+   "segundos": 940
+  },
+  "e2_N17_k3_s105_control": {
+   "codigo": 0,
+   "segundos": 940
+  },
+  "e2_N17_k3_s106_control": {
+   "codigo": 0,
+   "segundos": 930
+  },
+  "e2_N17_k3_s107_control": {
+   "codigo": 0,
+   "segundos": 930
+  },
+  "e2_N17_k3_s108_control": {
+   "codigo": 0,
+   "segundos": 940
+  },
+  "e2_N17_k3_s109_control": {
+   "codigo": 0,
+   "segundos": 930
+  },
+  "e2_N17_k3_s110_control": {
+   "codigo": 0,
+   "segundos": 930
+  },
+  "e2_N18_k3_s101_control": {
+   "codigo": 0,
+   "segundos": 1080
+  },
+  "e2_N18_k3_s102_control": {
+   "codigo": 0,
+   "segundos": 1070
+  },
+  "e2_N18_k3_s103_control": {
+   "codigo": 0,
+   "segundos": 1080
+  },
+  "e2_N18_k3_s104_control": {
+   "codigo": 0,
+   "segundos": 1080
+  },
+  "e2_N18_k3_s105_control": {
+   "codigo": 0,
+   "segundos": 1080
+  },
+  "e2_N18_k3_s106_control": {
+   "codigo": 0,
+   "segundos": 1080
+  },
+  "e2_N18_k3_s107_control": {
+   "codigo": 0,
+   "segundos": 1080
+  },
+  "e2_N18_k3_s108_control": {
+   "codigo": 0,
+   "segundos": 1080
+  },
+  "e2_N18_k3_s109_control": {
+   "codigo": 0,
+   "segundos": 690
+  },
+  "e2_N18_k3_s110_control": {
+   "codigo": 0,
+   "segundos": 690
+  }
+ },
+ "pendientes": [],
+ "activos": []
+}

@@ -1,0 +1,17 @@
+config {'N': 5, 'seed': 0, 'iters': 15, 'tiempo_max': 600.0, 'n_ses': 1000, 'pct_elite': 93, 'pct_super': 94, 'optim': 'adam', 'lr': 0.001, 'weight_decay': 0.0001, 'clip': None, 'minilote': None, 'seleccion': 'tesis', 'norma': 'mse', 'capas': (128, 64, 4), 'parar_al_completar': False, 'total_pares': 1, 'extra': {}}
+iter 0 | mejor +1.0000 | top100 +0.4568 | loss +0.6939 | n_elite 91 | n_super 78 | super_distintos 78 | sesiones_r1 1 | pares_distintos 1 | segundos +23.7000
+iter 1 | mejor +1.0000 | top100 +0.5693 | loss +0.6926 | n_elite 76 | n_super 66 | super_distintos 66 | sesiones_r1 0 | pares_distintos 1 | segundos +23.7000
+iter 2 | mejor +1.0000 | top100 +0.6473 | loss +0.6925 | n_elite 102 | n_super 60 | super_distintos 60 | sesiones_r1 2 | pares_distintos 1 | segundos +23.8000
+iter 3 | mejor +1.0000 | top100 +0.6506 | loss +0.6922 | n_elite 96 | n_super 60 | super_distintos 60 | sesiones_r1 2 | pares_distintos 1 | segundos +23.8000
+iter 4 | mejor +1.0000 | top100 +0.6533 | loss +0.6918 | n_elite 95 | n_super 60 | super_distintos 60 | sesiones_r1 1 | pares_distintos 1 | segundos +23.8000
+iter 5 | mejor +1.0000 | top100 +0.6655 | loss +0.6910 | n_elite 107 | n_super 60 | super_distintos 60 | sesiones_r1 2 | pares_distintos 1 | segundos +23.9000
+iter 6 | mejor +1.0000 | top100 +0.6669 | loss +0.6916 | n_elite 94 | n_super 60 | super_distintos 60 | sesiones_r1 2 | pares_distintos 1 | segundos +23.9000
+iter 7 | mejor +1.0000 | top100 +0.6734 | loss +0.6920 | n_elite 97 | n_super 60 | super_distintos 60 | sesiones_r1 1 | pares_distintos 1 | segundos +24.0000
+iter 8 | mejor +1.0000 | top100 +0.6836 | loss +0.6913 | n_elite 102 | n_super 60 | super_distintos 60 | sesiones_r1 2 | pares_distintos 1 | segundos +24.0000
+iter 9 | mejor +1.0000 | top100 +0.6982 | loss +0.6894 | n_elite 107 | n_super 60 | super_distintos 60 | sesiones_r1 4 | pares_distintos 1 | segundos +24.1000
+iter 10 | mejor +1.0000 | top100 +0.7078 | loss +0.6877 | n_elite 95 | n_super 60 | super_distintos 60 | sesiones_r1 4 | pares_distintos 1 | segundos +24.1000
+iter 11 | mejor +1.0000 | top100 +0.7197 | loss +0.6867 | n_elite 96 | n_super 60 | super_distintos 60 | sesiones_r1 3 | pares_distintos 1 | segundos +24.2000
+iter 12 | mejor +1.0000 | top100 +0.7243 | loss +0.6867 | n_elite 94 | n_super 60 | super_distintos 60 | sesiones_r1 2 | pares_distintos 1 | segundos +24.2000
+iter 13 | mejor +1.0000 | top100 +0.7382 | loss +0.6857 | n_elite 100 | n_super 66 | super_distintos 66 | sesiones_r1 2 | pares_distintos 1 | segundos +24.3000
+iter 14 | mejor +1.0000 | top100 +0.7455 | loss +0.6862 | n_elite 107 | n_super 69 | super_distintos 69 | sesiones_r1 2 | pares_distintos 1 | segundos +24.4000
+FIN {"enfoque": 1, "N": 5, "seed": 0, "iters_corridas": 15, "pares_distintos": 1, "total_pares_que_existen": 1, "iter_primer_par": 0, "mejor_final": 1.0, "segundos": 24.4}

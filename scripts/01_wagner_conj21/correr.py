@@ -14,6 +14,8 @@ ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--iters", type=int, default=1000)
 ap.add_argument("--tiempo-max", type=float, default=None, help="segundos; corta la corrida aunque falten iteraciones")
 ap.add_argument("--hilos", type=int, default=2, help="hilos de torch (para correr varias instancias a la vez)")
+ap.add_argument("--guardar-cada", type=int, default=20, help="mejor palabra en linea_tiempo.json cada N iteraciones")
+ap.add_argument("--pkl-cada", type=int, default=None, help="super-sesiones .pkl y modelo.pt cada N iteraciones (default = guardar-cada)")
 ap.add_argument("--nombre", default=None, help="subcarpeta en resultados/01_wagner_conj21 (default: modo_seedN)")
 args = ap.parse_args()
 
@@ -35,7 +37,8 @@ def log(msg):
 
 
 log(f"modo={args.modo} seed={args.seed} iters={args.iters} tiempo_max={args.tiempo_max} hilos={args.hilos} device={device}")
-res = entrenar_variante(args.iters, modo=args.modo, carpeta=str(carpeta), tiempo_max=args.tiempo_max, log=log)
+res = entrenar_variante(args.iters, modo=args.modo, carpeta=str(carpeta), tiempo_max=args.tiempo_max, log=log,
+                       guardar_cada=args.guardar_cada, pkl_cada=args.pkl_cada)
 
 # historial por iteracion (CSV: se versiona, a diferencia de los .pkl/.pt)
 with open(carpeta / "historial.csv", "w", newline="") as f:

@@ -1,0 +1,67 @@
+{
+ "commit": "15e5b656ce9fc3e87c0797b856161794332ad3bc",
+ "estado": {
+  "e1_N5_s1": {
+   "codigo": 0,
+   "segundos": 50
+  },
+  "e1_N5_s0": {
+   "codigo": 0,
+   "segundos": 70
+  },
+  "e1_N5_s2": {
+   "codigo": 0,
+   "segundos": 70
+  },
+  "e1_N6_s0": {
+   "codigo": 0,
+   "segundos": 390
+  },
+  "e1_N6_s1": {
+   "codigo": 0,
+   "segundos": 370
+  },
+  "e1_N6_s2": {
+   "codigo": 0,
+   "segundos": 380
+  },
+  "e1_N6_s0_control": {
+   "codigo": 0,
+   "segundos": 130
+  },
+  "e1_N6_s1_control": {
+   "codigo": 0,
+   "segundos": 140
+  },
+  "e1_N6_s2_control": {
+   "codigo": 0,
+   "segundos": 130
+  },
+  "e1_N7_s0_control": {
+   "codigo": 0,
+   "segundos": 720
+  },
+  "e1_N7_s0": {
+   "codigo": 0,
+   "segundos": 1940
+  },
+  "e1_N7_s2": {
+   "codigo": 0,
+   "segundos": 1750
+  },
+  "e1_N7_s1_control": {
+   "codigo": 0,
+   "segundos": 640
+  },
+  "e1_N7_s2_control": {
+   "codigo": 0,
+   "segundos": 470
+  },
+  "e1_N7_s1": {
+   "codigo": 0,
+   "segundos": 3440
+  }
+ },
+ "pendientes": [],
+ "activos": []
+}

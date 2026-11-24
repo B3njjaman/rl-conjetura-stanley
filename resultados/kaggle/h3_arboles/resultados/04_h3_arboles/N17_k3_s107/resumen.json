@@ -1,0 +1,11 @@
+{
+ "enfoque": 2,
+ "N": 17,
+ "k": 3,
+ "seed": 107,
+ "iters_corridas": 3000,
+ "pares_distintos": 0,
+ "total_pares_que_existen": 1,
+ "mejor_dist_no_iso": 7.745966692414834,
+ "segundos": 2659.8
+}
